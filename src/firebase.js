@@ -27,6 +27,7 @@ export const auth = firebase.auth();
 const firestore = firebase.firestore();
 export const database = {
     users: firestore.collection('Users'),
+    posts: firestore.collection('Posts'),
     getCurrentTimeStamp: firebase.firestore.FieldValue.serverTimestamp
 }
 

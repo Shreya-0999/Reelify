@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import NaviBar from './NaviBar';
 import FeedLeftCompo from './FeedLeftCompo';
 import FeedRightCompo from './FeedRightCompo';
@@ -6,13 +6,22 @@ import UploadImageFile from './Post/UploadImageFile';
 import UploadVideoFile from './Post/UploadVideoFile';
 import Post from './Post/Post';
 import { AuthContext } from '../../Context/AuthProvider';
+import { database } from './../../firebase';
 import './styles/Feed.css'
 
 function Feed() {
     console.log("Feed Started");
     const [userData, setUserData] = useState(null);
     const { currentUser } = useContext(AuthContext);
-    console.log("Current User: ",currentUser)
+    console.log("Current User: ",currentUser);
+
+    useEffect(()=>{
+        console.log("Feed Use Effect");
+        const unsubs =  database.users.doc(currentUser.uid).onSnapshot(doc=>{
+            setUserData(doc.data());
+            console.log(doc.data());
+        })
+    },[currentUser])
 
     return (
         <div className='bodyArea'>

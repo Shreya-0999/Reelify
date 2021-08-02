@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { AuthContext } from '../../Context/AuthProvider';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
@@ -6,7 +6,6 @@ import Button from '@material-ui/core/Button';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import InputAdornment from '@material-ui/core/InputAdornment';
-import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import IconButton from '@material-ui/core/IconButton';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -14,6 +13,7 @@ import OutlinedInput from '@material-ui/core/OutlinedInput';
 import './SignUp.css'
 import Logo from './instaLogo.png'
 import mainImage from './mainImage.gif'
+import { useHistory } from 'react-router-dom'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -46,6 +46,7 @@ function Login() {
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
+    const history = useHistory();
     const [values, setValues] = React.useState({
         showPassword: false
     });
@@ -67,6 +68,7 @@ function Login() {
             let res = await login(email, password);
             console.log(res.user);
             setLoading(false);
+            history.push('/');
             console.log("user logged in");
         }
         catch (e) {
@@ -75,6 +77,12 @@ function Login() {
             setLoading(false);
         }
     }
+
+    useEffect(()=>{
+        if(currentUser){
+            history.push('/');
+        }
+    },[]);
 
     return (
         <div className='body'>

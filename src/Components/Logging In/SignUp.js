@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { AuthContext } from '../../Context/AuthProvider';
 import { storage, database } from '../../firebase';
 import { makeStyles } from '@material-ui/core/styles';
@@ -15,6 +15,7 @@ import OutlinedInput from '@material-ui/core/OutlinedInput';
 import './SignUp.css'
 import Logo from './instaLogo.png'
 import mainImage from './mainImage.gif'
+import { useHistory } from 'react-router-dom';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -51,6 +52,7 @@ function SignUp() {
     const [profilePic, setProfilePic] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
+    const history = useHistory();
     const [values, setValues] = useState({
         showPassword: false
     });
@@ -101,6 +103,7 @@ function SignUp() {
                     Created_At: database.getCurrentTimeStamp()
                 })
                 setLoading(false);
+                history.push('/');
                 console.log(('User has Signed in '));
             }
         }
@@ -115,9 +118,17 @@ function SignUp() {
     const handleClickShowPassword = () => {
         setValues({ ...values, showPassword: !values.showPassword });
     };
+
     const handleMouseDownPassword = (event) => {
         event.preventDefault();
     };
+
+    useEffect(()=>{
+        console.log("UseEffect of Signup");
+        if(currentUser){
+            history.push('/')
+        }
+    },[]);
 
 
     return (
