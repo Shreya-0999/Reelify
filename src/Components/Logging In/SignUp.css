@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+*{
+    box-sizing: border-box;
+}
+.body{
+    height: 100vh;
+    width: 100vw;
+    margin:0;
+    background-image: radial-gradient(circle, #ddd0d0, #dfcfd0, #e0cdd1, #e1ccd2, #e1cbd4, #e0cbd5, #e0ccd6, #dfccd7, #decdd7, #deced7, #ddcfd7, #dcd0d7);
+    /* background-image: linear-gradient(to right bottom, #cac5cb, #ccc7ce, #cecad1, #d0ccd3, #d2cfd6); */
+    /* background:linear-gradient(40deg, #405ce6a8, #5851dba8, #833ab4a8,  #c13584a8, #e1306ca8, #fd1d1da8); */
+    
+    /* background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
+    background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+    background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 ); */
+    
+    /* background: linear-gradient(to bottom, #d3dff0 0%, #e4eaf5 50%, #cbd8ee 100%), linear-gradient(to bottom, rgba(0,0,0,0.02) 50%, rgba(255,255,255,0.02) 61%, rgba(0,0,0,0.02) 73%), linear-gradient(33deg, rgba(255,255,255,0.20) 0%, rgba(0,0,0,0.20) 100%);
+    background-blend-mode: normal,color-burn; */
+    
+    /* background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); */
+    /* background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.main_card{
+    height: 65%;
+    width: 55%;
+    display: flex;
+    border-radius: 0.5rem;
+    /* backdrop-filter: blur(10px);
+    z-index: 100; */
+    /* border: 1px solid rgba(73, 72, 72, 0.2);
+    background-color: #d8cbce28; */
+}
+.card_1{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.logImage{
+    height: 100%;
+    border-radius: 0.5rem;
+}
+.card_2{
+    height: 100%;
+    width: 40%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+    margin: 0 2rem;
+    /* padding: 5px; */
+    /* background-color: cornflowerblue; */
+}
+.insta_logo{
+    height: 15%;
+    width: 100%;
+    /* background-color: aqua; */
+    /* position: relative; */
+    /* top: -30px; */
+    display: flex;
+    justify-content:center;
+    align-items: center;
+
+}
+img{
+    max-height: 100%;
+    max-width: 100%;
+}
+h4{
+    height: 8%;
+    width: 100%;
+    margin: 0;
+    color: #363636;
+    /* color: #4e4a4a; */
+    font-size: 1.2rem;
+    display: flex;
+    justify-content:flex-start;
+    align-items: center;
+    /* background-color: bisque; */
+}
+.user_data{
+    height: 80%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items:flex-start;
+    /* background-color: rgb(217, 68, 247); */
+}
+.inputfield{
+    width: 100%;
+    /* background-color: cadetblue; */
+}
+.buttons{
+    width: 100%;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    /* background-color: cornflowerblue; */
+}

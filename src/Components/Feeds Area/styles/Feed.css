@@ -1,0 +1,40 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+    background-image: radial-gradient(circle, #ddd0d0, #dfcfd0, #e0cdd1, #e1ccd2, #e1cbd4, #e0cbd5, #e0ccd6, #dfccd7, #decdd7, #deced7, #ddcfd7, #dcd0d7);
+}
+.bodyArea{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+}
+.feedLeftCompo{
+    width: 25%;
+    height: 100%;
+}
+.middleArea{
+    width: 50%;
+    height: 100%;
+}
+.feedRightCompo{
+    width: 25%;
+    height: 100%;
+}
+.naviBar{
+    width: 100%;
+    height: 13%;
+}
+.feedsArea{
+    width: 100%;
+    height: 70%;
+}
+
+.uploadBtns{
+    height: 10%;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    /* background-color: cadetblue; */
+}
