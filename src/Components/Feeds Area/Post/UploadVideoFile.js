@@ -10,7 +10,7 @@ import {v4 as uuidv4} from 'uuid'
 
 const useStyles = makeStyles((theme) => ({
     uploadBtn: {
-        height: '100%',
+        height: '70%',
         width: 150,
         fontSize: 18
     }

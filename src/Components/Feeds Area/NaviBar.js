@@ -13,7 +13,6 @@ function NaviBar() {
             <div className= 'instagram'>
                 <img src= {instagram}/>
             </div>
-            
         </div>
     )
 }

@@ -10,7 +10,7 @@ import { storage, database } from '../../../firebase';
 
 const useStyles = makeStyles((theme) => ({
     uploadBtn: {
-        height: '100%',
+        height: '70%',
         width: 150,
         fontSize: 18
     }

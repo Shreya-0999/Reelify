@@ -28,10 +28,12 @@ function Feed() {
             <div className='feedLeftCompo'>
                 <FeedLeftCompo />
             </div>
+
             <div className='middleArea'>
                 <div className='naviBar'>
                     <NaviBar />
                 </div>
+                
                 <div className='feedsArea'>
                     <div className= 'uploadBtns'>
                         <UploadImageFile userData={userData} />
@@ -40,6 +42,7 @@ function Feed() {
                     <Post userData={userData} />
                 </div>
             </div>
+
             <div className='feedRightCompo'>
                 <FeedRightCompo />
             </div>

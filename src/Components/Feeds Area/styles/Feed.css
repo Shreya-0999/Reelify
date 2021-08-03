@@ -17,6 +17,12 @@ body{
 .middleArea{
     width: 50%;
     height: 100%;
+    margin: 0 auto;
+    /* background-color: blanchedalmond; */
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; */
 }
 .feedRightCompo{
     width: 25%;
@@ -24,12 +30,24 @@ body{
 }
 .naviBar{
     width: 100%;
-    height: 13%;
+    height: 11%;
 }
 .feedsArea{
     width: 100%;
-    height: 70%;
+    height: 87%;
+    overflow: auto;
+    border-radius: 1rem 1rem 0 0 ;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    /* background-color: rgb(196, 119, 18); */
+    /* background-image: radial-gradient(circle, #ddd0d0, #dfcfd0, #e0cdd1, #e1ccd2, #e1cbd4, #e0cbd5, #e0ccd6, #dfccd7, #decdd7, #deced7, #ddcfd7, #dcd0d7); */
+    /* background-image: radial-gradient(circle, #dad6d6, #dddbdb, #dfd9db, #dfd7d9, #e1cbd4, #e0cbd5, #e0ccd6, #dfc0d2, #d6becc, #dbc4d1, #e0cad7, #dbc8d3); */
 }
+.feedsArea::-webkit-scrollbar {
+    display: none;
+  }
 
 .uploadBtns{
     height: 10%;
