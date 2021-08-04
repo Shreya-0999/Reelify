@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { database } from '../../../firebase';
+import Avatar from '@material-ui/core/Avatar';
+import { database } from '../../firebase';
 import Image from './Image';
 import Video from './Video';
-import './styles/post.css'
+import Like from './Like';
+import '../Styles/post.css'
 
 function Post({ userData }) {
     console.log("Post started ");
@@ -32,13 +34,17 @@ function Post({ userData }) {
                             <React.Fragment key={index}>
                                 <div className="post">
                                     <div className='postHeader'>
+                                        <Avatar alt="profile image" src={post.UserProfile}></Avatar>
+                                        <h4 className='uname'>{post.UserName} </h4>
                                     </div>
                                     
                                     <div className='postMedia'>
                                         {post.Type == 'image' ? <Image source={post.PostUrl} /> : <Video source={post.PostUrl} />}
                                     </div>
                                     
-                                    <div className='postDetails'></div>
+                                    <div className='postDetails'>
+                                        <Like userData={userData} postData={post} />
+                                    </div>
                                 </div>
                             </React.Fragment>
                         ))}

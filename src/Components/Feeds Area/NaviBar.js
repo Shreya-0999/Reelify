@@ -1,7 +1,7 @@
 import React from 'react'
-import './styles/NaviBar.css'
-import logo from './images/logo.png'
-import instagram from './images/instagram.png'
+import '../Styles/NaviBar.css'
+import logo from '../Images/logo.png'
+import instagram from '../Images/instagram.png'
 
 function NaviBar() {
     return (

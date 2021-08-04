@@ -2,12 +2,12 @@ import React, { useContext, useEffect, useState } from 'react'
 import NaviBar from './NaviBar';
 import FeedLeftCompo from './FeedLeftCompo';
 import FeedRightCompo from './FeedRightCompo';
-import UploadImageFile from './Post/UploadImageFile';
-import UploadVideoFile from './Post/UploadVideoFile';
-import Post from './Post/Post';
+import UploadImageFile from '../Post/UploadImageFile';
+import UploadVideoFile from '../Post/UploadVideoFile';
+import Post from '../Post/Post';
 import { AuthContext } from '../../Context/AuthProvider';
 import { database } from './../../firebase';
-import './styles/Feed.css'
+import '../Styles/Feed.css'
 
 function Feed() {
     console.log("Feed Started");

@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import Button from '@material-ui/core/Button';
-import { database, storage } from '../../../firebase';
+import { database, storage } from '../../firebase';
 import VideocamRoundedIcon from '@material-ui/icons/VideocamRounded';
 import Alert from '@material-ui/lab/Alert';
 import { makeStyles } from '@material-ui/core/styles';
 import LinearProgress from '@material-ui/core/LinearProgress';
-import './styles/uploadBtn.css'
+import '../Styles/uploadBtn.css'
 import {v4 as uuidv4} from 'uuid'
 
 const useStyles = makeStyles((theme) => ({

@@ -1,11 +1,11 @@
 import React from 'react'
 
-function Image() {
+function Like() {
     return (
         <div>
-            image
+            
         </div>
     )
 }
 
-export default Image
+export default Like

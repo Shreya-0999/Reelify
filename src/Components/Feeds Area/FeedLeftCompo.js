@@ -1,5 +1,5 @@
 import React from 'react'
-import './styles/FeedLeftCompo.css'
+import '../Styles/FeedLeftCompo.css'
 
 function FeedLeftCompo() {
     return (

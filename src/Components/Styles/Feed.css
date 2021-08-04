@@ -9,6 +9,7 @@ body{
     height: 100vh;
     width: 100vw;
     display: flex;
+    overflow-x: hidden;
 }
 .feedLeftCompo{
     width: 25%;
@@ -35,7 +36,7 @@ body{
 .feedsArea{
     width: 100%;
     height: 87%;
-    overflow: auto;
+    /* overflow: auto; */
     border-radius: 1rem 1rem 0 0 ;
     display: flex;
     flex-direction: column;
@@ -45,9 +46,6 @@ body{
     /* background-image: radial-gradient(circle, #ddd0d0, #dfcfd0, #e0cdd1, #e1ccd2, #e1cbd4, #e0cbd5, #e0ccd6, #dfccd7, #decdd7, #deced7, #ddcfd7, #dcd0d7); */
     /* background-image: radial-gradient(circle, #dad6d6, #dddbdb, #dfd9db, #dfd7d9, #e1cbd4, #e0cbd5, #e0ccd6, #dfc0d2, #d6becc, #dbc4d1, #e0cad7, #dbc8d3); */
 }
-.feedsArea::-webkit-scrollbar {
-    display: none;
-  }
 
 .uploadBtns{
     height: 10%;

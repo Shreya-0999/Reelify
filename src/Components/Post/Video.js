@@ -16,7 +16,9 @@ function Video(props) {
                 loop
                 style={{
                     maxHeight: '100%',
-                    maxWidth: '100%'
+                    maxWidth: '100%',
+                    borderRadius: "1rem",
+                    // objectFit: 'fill'
                 }}
             />
         </>

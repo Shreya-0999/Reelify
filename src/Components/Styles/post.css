@@ -8,29 +8,40 @@
     align-items: center;
 }
 .post{
-    height: 750px;
-    width: 90%;
+    /* height: 800px; */
+    width: 700px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: 15px;
     border: 1px solid rgb(165, 163, 163);
-    /* background-color: rgba(181, 185, 184, 0.384); */
+    background-color: rgba(181, 185, 184, 0.384);
     /* background-color: rgb(235, 241, 239); */
 }
 .postHeader{
-    height: 10%;
-    /* background-color: rgb(202, 204, 203); */
+    height: 60px;
+    width: 100%;
+    display: flex;
+    background-color: rgb(202, 204, 203);
 }
 .postMedia{
-    height: 80vh;
-    width: 90%;
+    /* height: 80%; */
+    max-height: 900px;
+    width: 95%;
     border-radius: 2rem;
     margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: rgba(104, 107, 106, 0.384);
 }
 .postDetails{
-    height: 10%;
-    /* background-color: rgb(199, 204, 202); */
+    height: 60px;
+    width: 100%;
+    background-color: rgb(199, 204, 202);
+}
+
+.uname{
+    margin: 0;
 }

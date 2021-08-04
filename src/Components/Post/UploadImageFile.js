@@ -4,9 +4,9 @@ import ImageRoundedIcon from '@material-ui/icons/ImageRounded';
 import Alert from '@material-ui/lab/Alert';
 import { makeStyles } from '@material-ui/core/styles';
 import LinearProgress from '@material-ui/core/LinearProgress';
-import './styles/uploadBtn.css'
+import '../Styles/uploadBtn.css'
 import {v4 as uuidv4} from 'uuid'
-import { storage, database } from '../../../firebase';
+import { database, storage } from '../../firebase';
 
 const useStyles = makeStyles((theme) => ({
     uploadBtn: {
