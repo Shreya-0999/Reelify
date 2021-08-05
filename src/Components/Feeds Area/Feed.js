@@ -13,15 +13,13 @@ function Feed() {
     console.log("Feed Started");
     const [userData, setUserData] = useState(null);
     const { currentUser } = useContext(AuthContext);
-    console.log("Current User: ",currentUser);
 
     useEffect(()=>{
         console.log("Feed Use Effect");
         const unsubs =  database.users.doc(currentUser.uid).onSnapshot(doc=>{
             setUserData(doc.data());
-            console.log(doc.data());
-        })
-    },[currentUser])
+        }) 
+    },[])
 
     return (
         <div className='bodyArea'>
