@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import FavoriteIcon from '@material-ui/icons/Favorite';
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import { database } from '../../firebase';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -36,8 +37,9 @@ function Like({ userData = null, postData = null }) {
         }
     }
 
+    // error
     useEffect(() => {
-        let check = postData?.Likes?.includes(userData?.Uid) ? true : false;
+        let check = postData.Likes.includes(userData?.Uid) ? true : false;
         console.log(check);
         setLike(check);
     }, [postData])
@@ -47,7 +49,7 @@ function Like({ userData = null, postData = null }) {
             {
                 like != null
                     ? <>{like == false
-                        ? <><FavoriteIcon className={`${classes.unlike} icon-styling`} onClick={handleLike} /> </>
+                        ? <><FavoriteBorderIcon className={`${classes.unlike} icon-styling`} onClick={handleLike} /> </>
                         : <><FavoriteIcon className={`${classes.like} icon-styling`} onClick={handleLike} /></>
                     }</>
                     : <></>

@@ -27,7 +27,7 @@
 }
 .postMedia{
     /* height: 80%; */
-    max-height: 900px;
+    max-height: 700px;
     width: 95%;
     border-radius: 2rem;
     margin: 0 auto;
@@ -39,9 +39,41 @@
 .postDetails{
     height: 60px;
     width: 100%;
+    display: flex;
     background-color: rgb(199, 204, 202);
 }
 
 .uname{
     margin: 0;
+}
+
+/* ***************************DAILOG BOX********************************* */
+.dialogContainer{
+    /* min-height: 50vh; */
+    height: 85vh;
+    /* width: 47vw; */
+    display: flex;
+}
+.media-part{
+    min-height: 50vh;
+    max-height: 85vh;
+    min-width: 23vw;
+    display: flex;
+    justify-content: center;
+}
+.dialogVideo{
+    max-height: 100%;
+    max-width: 100%;
+}
+.info-part{
+    height: 85vh;
+    width: 23vw;
+}
+.extra{
+    background-color: antiquewhite;
+    height: 50px;
+}
+.likes{
+    height: 100%;
+    background-color: aqua;
 }
