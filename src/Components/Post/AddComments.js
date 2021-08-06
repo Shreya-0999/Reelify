@@ -13,6 +13,7 @@ const useStyles = makeStyles({
 });
 
 function AddComments({ userData = null, postData = null }) {
+    console.log("AddComments start");
     const classes = useStyles();
     const [text, setText] = useState('');
 
@@ -20,11 +21,10 @@ function AddComments({ userData = null, postData = null }) {
         let comment = e.target.value;
         setText(comment);
     }
-    console.log("---------------", postData);
 
     const handleOnEnter = () => {
         let obj = {
-            UserName: userData.UserName,
+            UserName: userData.Username,
             Text: text,
             ProfilePic: userData.ProfileUrl
         }
