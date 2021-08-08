@@ -23,7 +23,7 @@ import Video from './Video';
 import Like from './Like';
 import '../Styles/post.css'
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme)=>({
     chaticon: {
         color: 'white',
         cursor: 'pointer'
@@ -32,47 +32,20 @@ const useStyles = makeStyles({
         width: '100%',
         padding: '0px'
     },
-    loader: {
-        position: 'absolute',
-        left: '50%',
-        top: '50%'
-    },
     typo: {
         marginLeft: '2%'
     },
-    vac: {
-        marginLeft: '3.5%',
-        color: '#8e8e8e',
-        cursor: 'pointer'
-    },
-    dp: {
-        marginLeft: '2%'
-    },
-    cc: {
-        height: '50vh',
-        overflowY: 'auto'
-    },
-    seeComments: {
-        height: '58vh',
-        overflowY: 'auto'
-    },
-    ci: {
-
-        color: 'white',
-        left: '9%',
-        cursor: 'pointer'
-    },
-    mn: {
-        color: 'white',
-    },
-    tmn: {
-        color: 'white'
-    }
-})
+    large: {
+        width: theme.spacing(3),
+        height: theme.spacing(3),
+        
+      }
+}))
 
 
-function Post({ userData }) {
+function Post({ userData=null }) {
     console.log("Post started ");
+    // console.log("*************Post**********", userData);
     const [posts, setPost] = useState(null);
     const classes = useStyles();
     const [openId, setOpenId] = useState(null);
@@ -129,7 +102,7 @@ function Post({ userData }) {
                             <React.Fragment key={index}>
                                 <div className={`post ${post.Type}`}>
                                     <div className='postHeader'>
-                                        <Avatar alt="profile image" src={post.UserProfile}></Avatar>
+                                        <Avatar classname={classes.large} alt="profile image" src={post.UserProfile}></Avatar>
                                         <h4 className='uname'>{post.UserName} </h4>
                                     </div>
 

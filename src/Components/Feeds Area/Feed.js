@@ -14,37 +14,48 @@ function Feed() {
     const [userData, setUserData] = useState(null);
     const { currentUser } = useContext(AuthContext);
 
-    useEffect(()=>{
+    useEffect(() => {
         console.log("Feed Use Effect");
-        const unsubs =  database.users.doc(currentUser.uid).onSnapshot(doc=>{
+        const unsubs = database.users.doc(currentUser.uid).onSnapshot(doc => {
             setUserData(doc.data());
-        }) 
-    },[])
+        })
+    }, [])
+    // console.log("------------FEeEEEDS-----------", userData);
 
     return (
-        <div className='bodyArea'>
-            <div className='feedLeftCompo'>
-                <FeedLeftCompo />
-            </div>
+        <>
+            {
+                userData == null
+                    ? <h2>Loading Please Wait.....</h2>
+                    : <>
+                        <div className='feedBody'>
+                            <div className='bodyArea'>
+                                <div className='feedLeftCompo'>
+                                    <FeedLeftCompo />
+                                </div>
 
-            <div className='middleArea'>
-                <div className='naviBar'>
-                    <NaviBar />
-                </div>
-                
-                <div className='feedsArea'>
-                    <div className= 'uploadBtns'>
-                        <UploadImageFile userData={userData} />
-                        <UploadVideoFile userData={userData} />
-                    </div>
-                    <Post userData={userData} />
-                </div>
-            </div>
+                                <div className='middleArea'>
+                                    <div className='naviBar'>
+                                        <NaviBar />
+                                    </div>
 
-            <div className='feedRightCompo'>
-                <FeedRightCompo />
-            </div>
-        </div>
+                                    <div className='feedsArea'>
+                                        <div className='uploadBtns'>
+                                            <UploadImageFile userData={userData} />
+                                            <UploadVideoFile userData={userData} />
+                                        </div>
+                                        <Post userData={userData} />
+                                    </div>
+                                </div>
+
+                                <div className='feedRightCompo'>
+                                    <FeedRightCompo />
+                                </div>
+                            </div>
+                        </div>
+                    </>
+            }
+        </>
     )
 }
 

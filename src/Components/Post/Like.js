@@ -17,6 +17,7 @@ const useStyles = makeStyles({
 
 function Like({ userData = null, postData = null }) {
     console.log("Like start");
+    // console.log("Likesss:::",userData);
     const classes = useStyles();
     const [like, setLike] = useState(null);
 
@@ -39,7 +40,9 @@ function Like({ userData = null, postData = null }) {
 
     // error
     useEffect(() => {
-        let check = postData.Likes.includes(userData?.Uid) ? true : false;
+        // console.log(":::::::::::::::::::",postData.Likes);
+        // console.log(":::::::::USERDATA::::::::::",userData);
+        let check = postData?.Likes.includes(userData?.Uid) ? true : false;
         console.log(check);
         setLike(check);
     }, [postData])
@@ -49,8 +52,8 @@ function Like({ userData = null, postData = null }) {
             {
                 like != null
                     ? <>{like == false
-                        ? <><FavoriteBorderIcon className={`${classes.unlike} icon-styling`} onClick={handleLike} /> </>
-                        : <><FavoriteIcon className={`${classes.like} icon-styling`} onClick={handleLike} /></>
+                        ? <><FavoriteIcon className={classes.unlike} onClick={handleLike} /> </>
+                        : <><FavoriteIcon className={classes.like} onClick={handleLike} /></>
                     }</>
                     : <></>
             }

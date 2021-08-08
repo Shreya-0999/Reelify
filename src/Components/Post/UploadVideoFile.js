@@ -19,7 +19,6 @@ const useStyles = makeStyles((theme) => ({
 
 function UploadVideoFile(props) {
     console.log("Upload Video Starts ");
-    console.log("hiiiii", props.userData);
     // console.log(props);
     const classes = useStyles();
     const [loading, setLoading] = useState(false);

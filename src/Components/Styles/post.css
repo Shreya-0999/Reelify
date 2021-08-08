@@ -1,3 +1,4 @@
+
 .postContainer{
     /* height: 100%; */
     width: 100%;
@@ -15,15 +16,18 @@
     justify-content: center;
     align-items: center;
     margin: 15px;
-    border: 1px solid rgb(165, 163, 163);
-    background-color: rgba(181, 185, 184, 0.384);
-    /* background-color: rgb(235, 241, 239); */
+    background: rgba(222, 215, 240, 0.486);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(6.7px);
+    -webkit-backdrop-filter: blur(6.7px);
+    border: 2px solid rgba(216, 218, 219, 0.877);
 }
 .postHeader{
     height: 60px;
     width: 100%;
     display: flex;
-    background-color: rgb(202, 204, 203);
+    /* background-color: rgb(202, 204, 203); */
 }
 .postMedia{
     /* height: 80%; */
@@ -34,17 +38,22 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(104, 107, 106, 0.384);
+    /* background-color: rgba(104, 107, 106, 0.384); */
 }
 .postDetails{
     height: 60px;
     width: 100%;
     display: flex;
-    background-color: rgb(199, 204, 202);
+    /* background-color: rgb(199, 204, 202); */
 }
 
 .uname{
-    margin: 0;
+    height: 100%;
+    margin: 0 10px;
+    /* font-weight: bolder; */
+    font-size: 1.3rem;
+    border-radius: 16px;
+
 }
 
 /* ***************************DAILOG BOX********************************* */
