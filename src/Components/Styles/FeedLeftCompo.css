@@ -1,6 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap');
 .leftBody{
     height: 100%;
+    margin: 20px;
+    /* background-color: aqua; */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
 }
-h1{
+.leftFeedPic{
+    height: 270px;
+    width: 270px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: aqua; */
+    border-radius: 47% 53% 36% 64% / 55% 79% 21% 45% ;
+    
+}
+.leftFeedimg{
+    width: 100%;
+    height: 100%;
+    border-radius: 47% 53% 36% 64% / 55% 79% 21% 45% ;
+    object-fit: cover;
+}
+.leftFeedUserName{
+    height: 100px;
+    width: 100%;
     margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* position: relative;
+    top: 100px;
+    transform: rotate(270deg); */
+    /* text-shadow: aquamarine; */
+    /* background-color: aquamarine; */
+    /* font-family: 'Nunito', sans-serif;
+    color: rgb(50, 49, 51); */
+    font-size: 3rem;
 }

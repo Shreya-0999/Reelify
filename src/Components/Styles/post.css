@@ -2,7 +2,6 @@
 .postContainer{
     /* height: 100%; */
     width: 100%;
-    /* background-color: antiquewhite; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -15,7 +14,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 15px;
+    margin: 25px;
+    padding: 20px;
     background: rgba(222, 215, 240, 0.486);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);

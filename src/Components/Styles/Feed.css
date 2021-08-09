@@ -1,10 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap');
 *{
     box-sizing: border-box;
 }
 body{
     margin: 0;
-    font-family: 'Quicksand', sans-serif;
+    /* font-family: 'Quicksand', sans-serif; */
+    font-family: 'Nunito', sans-serif;
+    color: rgb(63, 63, 65);
+    /* font-weight: 900; */
 }
 .feedBody{
     background-image: url('./Bg.png');

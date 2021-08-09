@@ -36,16 +36,15 @@ const useStyles = makeStyles((theme)=>({
         marginLeft: '2%'
     },
     large: {
-        width: theme.spacing(3),
-        height: theme.spacing(3),
-        
+        width: theme.spacing(5),
+        height: theme.spacing(5),
+        margin:'8px'
       }
 }))
 
 
 function Post({ userData=null }) {
     console.log("Post started ");
-    // console.log("*************Post**********", userData);
     const [posts, setPost] = useState(null);
     const classes = useStyles();
     const [openId, setOpenId] = useState(null);
@@ -62,13 +61,14 @@ function Post({ userData=null }) {
             // console.log("enteries", element);
             let el = element.target.childNodes[1].childNodes[0];
             el.play().then(() => {
+                console.log("play");
                 if (!el.paused && !element.isIntersecting) {
                     el.pause();
                 }
             })
         })
     }
-    const observer = new IntersectionObserver(callbacks, { threshold: 0.85 });   // chnage
+    const observer = new IntersectionObserver(callbacks, { threshold: 0.8 });   // chnage
 
     useEffect(() => {
         console.log("Post use effect 1");
@@ -89,6 +89,7 @@ function Post({ userData=null }) {
         console.log("Observer use effect");
         let videos = document.querySelectorAll(".video");
         videos.forEach(el => {
+            console.log("el=>", el);
             observer.observe(el);
         })
     }, [posts]);
@@ -102,7 +103,7 @@ function Post({ userData=null }) {
                             <React.Fragment key={index}>
                                 <div className={`post ${post.Type}`}>
                                     <div className='postHeader'>
-                                        <Avatar classname={classes.large} alt="profile image" src={post.UserProfile}></Avatar>
+                                        <Avatar className={classes.large} alt="profile image" src={post.UserProfile}></Avatar>
                                         <h4 className='uname'>{post.UserName} </h4>
                                     </div>
 

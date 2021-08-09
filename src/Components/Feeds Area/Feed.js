@@ -31,7 +31,7 @@ function Feed() {
                         <div className='feedBody'>
                             <div className='bodyArea'>
                                 <div className='feedLeftCompo'>
-                                    <FeedLeftCompo />
+                                    <FeedLeftCompo userData = {userData} />
                                 </div>
 
                                 <div className='middleArea'>
