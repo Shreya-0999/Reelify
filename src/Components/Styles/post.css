@@ -44,7 +44,13 @@
     height: 60px;
     width: 100%;
     display: flex;
+    align-items: center;
+    padding: 0 20px;
     /* background-color: rgb(199, 204, 202); */
+}
+
+.iconStyling{
+    margin: 10px;
 }
 
 .uname{
@@ -62,6 +68,12 @@
     height: 85vh;
     /* width: 47vw; */
     display: flex;
+    /* background: rgba(222, 215, 240, 0.486);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(6.7px);
+    -webkit-backdrop-filter: blur(6.7px);
+    border: 2px solid rgba(216, 218, 219, 0.877); */
 }
 .media-part{
     min-height: 50vh;
@@ -69,20 +81,28 @@
     min-width: 23vw;
     display: flex;
     justify-content: center;
+    border-radius: 5px;
 }
 .dialogVideo{
     max-height: 100%;
     max-width: 100%;
+    border-radius: 5px;
 }
 .info-part{
     height: 85vh;
     width: 23vw;
+    border-radius: 5px;
+    background: rgba(222, 215, 240, 0.486);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(6.7px);
+    -webkit-backdrop-filter: blur(6.7px);
+    border: 2px solid rgba(216, 218, 219, 0.877);
 }
 .extra{
-    background-color: antiquewhite;
-    height: 50px;
+    /* background-color: antiquewhite; */
+    height: 10vh;
 }
 .likes{
     height: 100%;
-    background-color: aqua;
+    /* background-color: aqua; */
 }

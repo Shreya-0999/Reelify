@@ -23,14 +23,11 @@ import Video from './Video';
 import Like from './Like';
 import '../Styles/post.css'
 
-const useStyles = makeStyles((theme)=>({
-    chaticon: {
-        color: 'white',
-        cursor: 'pointer'
-    },
-    root: {
-        width: '100%',
-        padding: '0px'
+const useStyles = makeStyles((theme) => ({
+    chatBubble: {
+        color: '#3f3f41',
+        cursor: 'pointer',
+        fontSize: '32px'
     },
     typo: {
         marginLeft: '2%'
@@ -38,12 +35,33 @@ const useStyles = makeStyles((theme)=>({
     large: {
         width: theme.spacing(5),
         height: theme.spacing(5),
-        margin:'8px'
-      }
+        margin: '8px'
+    },
+    postDialogBox: {
+        background: "rgba(222, 215, 240, 0.486)",
+        boxShadow: " 0 4px 30px rgba(0, 0, 0, 0.1)",
+        backdropFilter: "blur(6.7px)",
+        border: "2px solid rgba(216, 218, 219, 0.877)",
+        WebkitBackdropFilter: "blur(6.7px)"
+    },
+    dialogHeader:{
+        height:"10vh"
+    },
+    dialogComments:{
+        height:"52vh",
+        background: "rgba(222, 215, 240, 0.486)",
+        boxShadow: " 0 4px 30px rgba(0, 0, 0, 0.1)",
+        backdropFilter: "blur(6.7px)",
+        WebkitBackdropFilter: "blur(6.7px)",
+        fontFamily: "'Nunito', sans-serif",
+        border:"none"
+
+    },
+
 }))
 
 
-function Post({ userData=null }) {
+function Post({ userData = null }) {
     console.log("Post started ");
     const [posts, setPost] = useState(null);
     const classes = useStyles();
@@ -112,10 +130,10 @@ function Post({ userData=null }) {
                                     </div>
 
                                     <div className='postDetails'>
-                                        <Like userData={userData} postData={post} />
-                                        <ChatBubbleOutlineIcon className={`${classes.ci} ${classes.chaticon} icon-styling`} onClick={() => handleClickOpen(post.PostId)} />
-                                        <Dialog maxWidth="md" onClose={handleClose} aria-labelledby="customized-dialog-title" open={openId == post.PostId}>
-                                            <MuiDialogTitle>
+                                        <Like userData={userData} postData={post} className={`${classes.postLike} iconStyling`} />
+                                        <ChatBubbleOutlineIcon className={`${classes.chatBubble} iconStyling`} onClick={() => handleClickOpen(post.PostId)} />
+                                        <Dialog maxWidth="md"  onClose={handleClose} aria-labelledby="customized-dialog-title" open={openId == post.PostId}>
+                                            <MuiDialogTitle className={classes.postDialogBox}>
                                                 <div className='dialogContainer'>
                                                     <div className='media-part'>
                                                         {post.Type == 'image'
@@ -142,11 +160,12 @@ function Post({ userData=null }) {
                                                                     </IconButton>
                                                                 }
                                                                 title={post?.UserName}
+                                                                className={classes.dialogHeader}
 
                                                             />
 
                                                             <hr style={{ border: "none", height: "1px", color: "#dfe6e9", backgroundColor: "#dfe6e9" }} />
-                                                            <CardContent className={classes.seeComments}>
+                                                            <CardContent className={classes.dialogComments}>
 
                                                                 <Comments userData={userData} postData={post} />
                                                             </CardContent>

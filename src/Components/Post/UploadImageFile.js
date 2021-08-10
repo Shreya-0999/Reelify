@@ -5,14 +5,22 @@ import Alert from '@material-ui/lab/Alert';
 import { makeStyles } from '@material-ui/core/styles';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import '../Styles/uploadBtn.css'
-import {v4 as uuidv4} from 'uuid'
+import { v4 as uuidv4 } from 'uuid'
 import { database, storage } from '../../firebase';
 
 const useStyles = makeStyles((theme) => ({
     uploadBtn: {
         height: '70%',
-        width: 150,
-        fontSize: 18
+        width: 200,
+        fontSize: 18,
+        fontFamily: `'Nunito', sans-serif`,
+        fontWeight: 100,
+        background:" rgba(181, 185, 255, 0.41)",
+        boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
+        border: "1px solid rgba(184, 149, 239, 0.65)",
+        backdropFilter: "blur(6px)",
+        WebkitBackdropFilter:"blur(6px)",
+        borderRadius: "2rem"
     }
 
 }));
@@ -26,8 +34,8 @@ function UploadImageFile(props) {
     const handleImageFile = (e) => {
         console.log("Upload Image Starts ");
         const file = e?.target?.files[0];
-        
-        if(!file){
+
+        if (!file) {
             setError("Please select a file.");
             console.log("Please select a file.");
             setTimeout(() => {
@@ -36,7 +44,7 @@ function UploadImageFile(props) {
             return
         }
 
-        if(types.indexOf(file.type) == -1){
+        if (types.indexOf(file.type) == -1) {
             setError("Please select a file.");
             console.log("Please select a image file.");
             setTimeout(() => {
@@ -46,7 +54,7 @@ function UploadImageFile(props) {
         }
         // minimum file size ?
 
-        try{
+        try {
             setLoading(true);
             const id = uuidv4();
             const uploadImageTask = storage.ref(`/posts/${props.userData.Uid}/images/${file.name}`).put(file);
@@ -65,7 +73,7 @@ function UploadImageFile(props) {
                 setLoading(false)
             }
 
-            async function fn3(){
+            async function fn3() {
                 console.log("Uploading image ");
                 const imageURL = await uploadImageTask.snapshot.ref.getDownloadURL();
                 const docRef = await database.posts.add({
@@ -75,7 +83,7 @@ function UploadImageFile(props) {
                     UserId: props.userData.Uid,
                     UserName: props.userData.Username,
                     UserProfile: props.userData.ProfileUrl,
-                    Comment:[],
+                    Comment: [],
                     Likes: [],
                     CreatedAt: database.getCurrentTimeStamp()
                 })
@@ -88,7 +96,7 @@ function UploadImageFile(props) {
                 setLoading(false);
             }
         }
-        catch(e){
+        catch (e) {
             setError(e);
             setTimeout(() => {
                 setError(null)
@@ -112,8 +120,8 @@ function UploadImageFile(props) {
                     <label htmlFor="contained-button-file">
                         <Button
                             className={classes.uploadBtn}
-                            variant="contained"
-                            color="secondary"
+                            // variant="contained"
+                            // color="secondary"
                             component="span"
                             size='medium'
                             disabled={loading}

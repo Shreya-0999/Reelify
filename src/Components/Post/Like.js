@@ -7,11 +7,13 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles({
     like: {
         color: '#e74c3c',
-        cursor: 'pointer'
+        cursor: 'pointer',
+        fontSize:'32px'
     },
     unlike: {
-        color: 'white',
-        cursor: 'pointer'
+        color: '#3f3f41',
+        cursor: 'pointer',
+        fontSize:'32px'
     }
 })
 
@@ -52,7 +54,7 @@ function Like({ userData = null, postData = null }) {
             {
                 like != null
                     ? <>{like == false
-                        ? <><FavoriteIcon className={classes.unlike} onClick={handleLike} /> </>
+                        ? <><FavoriteBorderIcon className={classes.unlike} onClick={handleLike} /> </>
                         : <><FavoriteIcon className={classes.like} onClick={handleLike} /></>
                     }</>
                     : <></>
