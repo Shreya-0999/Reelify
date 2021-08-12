@@ -1,26 +1,38 @@
 .instaImage{
-    height: 100%;
-    width: 100%;
+    height: 80%;
+    width: 40%;
     display: flex;
     justify-content: center;
     align-items: center;
+    /* position: fixed; */
+    /* position: sticky;
+    top:0; */
+    /* background-color: cadetblue; */
 }
 .logo{
-    height: 55%;
-    width: 6%;
+    height: 100%;
+    width: 10%;
     /* margin-right: 5px; */
-    margin: 10px;
+    /* margin: 10px; */
     padding: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: beige; */
 }
 .span{
-    height: 55%;
-    border-right: 1px solid black;
+    height: 100%;
+    border-right: 1px solid rgba(168, 164, 164, 0.637);
 }
 .instagram{
-    height: 55%;
+    height: 100%;
     width: 25%;
     padding: 7px;
-    margin: 10px;
+    /* margin: 10px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: blueviolet; */
 }
 img{
     max-height: 100%;

@@ -1,68 +1,31 @@
 import React, { useState, useEffect } from 'react'
+import { database } from '../../firebase';
+import { makeStyles } from '@material-ui/core/styles';
+import Avatar from '@material-ui/core/Avatar';
+import CardContent from '@material-ui/core/CardContent';
+import CardHeader from '@material-ui/core/CardHeader';
+import Typography from '@material-ui/core/Typography';
 import Dialog from '@material-ui/core/Dialog';
 import MuiDialogTitle from '@material-ui/core/DialogTitle';
 import IconButton from '@material-ui/core/IconButton';
 import Card from '@material-ui/core/Card';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import CardContent from '@material-ui/core/CardContent';
-import CardHeader from '@material-ui/core/CardHeader';
-import Typography from '@material-ui/core/Typography';
-import Avatar from '@material-ui/core/Avatar';
-import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
-import { database } from '../../firebase';
-import { makeStyles } from '@material-ui/core/styles';
-import Comments from './Comments';
-import AddComments from './AddComments';
-import Image from './Image';
-import Video from './Video';
-import Like from './Like';
-import '../Styles/post.css'
+import Image from '../Post/Image';
+import Video from '../Post/Video';
+import Comments from '../Post/Comments';
+import AddComments from '../Post/AddComments';
+import Like from '../Post/Like';
+import '../Styles/profile.css'
 
 const useStyles = makeStyles((theme) => ({
-    chatBubble: {
-        color: '#3f3f41',
-        cursor: 'pointer',
-        fontSize: '32px'
-    },
-    typo: {
-        marginLeft: '2%'
-    },
-    large: {
-        width: theme.spacing(5),
-        height: theme.spacing(5),
-        margin: '8px'
-    },
-    postDialogBox: {
-        background: "rgba(222, 215, 240, 0.486)",
-        boxShadow: " 0 4px 30px rgba(0, 0, 0, 0.1)",
-        backdropFilter: "blur(6.7px)",
-        border: "2px solid rgba(216, 218, 219, 0.877)",
-        WebkitBackdropFilter: "blur(6.7px)"
-    },
-    dialogHeader: {
-        height: "10vh"
-    },
-    dialogComments: {
-        height: "52vh",
-        background: "rgba(222, 215, 240, 0.486)",
-        boxShadow: " 0 4px 30px rgba(0, 0, 0, 0.1)",
-        backdropFilter: "blur(6.7px)",
-        WebkitBackdropFilter: "blur(6.7px)",
-        fontFamily: "'Nunito', sans-serif",
-        border: "none"
-
-    },
 
 }))
 
-
-function Post({ userData = null }) {
-    console.log("Post started ");
-    const [posts, setPost] = useState(null);
+function Profile({ userData }) {
+    console.log("Profile page");
     const classes = useStyles();
     const [openId, setOpenId] = useState(null);
-    // const history = useHistory();
-
+    const [profPosts, setProfPost] = useState(null);
     const handleClickOpen = (id) => {
         setOpenId(id);
     };
@@ -70,67 +33,34 @@ function Post({ userData = null }) {
         setOpenId(null);
     };
 
-    const callbacks = enteries => {
-        enteries.forEach(element => {
-            // console.log("enteries", element);
-            let el = element.target.childNodes[1].childNodes[0];
-            el.play().then(() => {
-                console.log("play");
-                if (!el.paused && !element.isIntersecting) {
-                    el.pause();
-                }
-            })
-        })
-    }
-    const observer = new IntersectionObserver(callbacks, { threshold: 0.8 });   // chnage
-
     useEffect(() => {
-        console.log("Post use effect 1");
+        console.log("Profile use effect 1");
         let postArr = [];
         let unsbs = database.posts.orderBy('CreatedAt', 'desc').onSnapshot(allPostSnap => {
             postArr = [];
             allPostSnap.forEach(doc => {
-                let obj = { ...doc.data(), PostId: doc.id };
-                postArr.push(obj);
+                // console.log(doc.data().UserId);
+                if (doc.data().UserId == userData.Uid) {
+                    let obj = { ...doc.data(), PostId: doc.id };
+                    postArr.push(obj);
+                }
             })
-            setPost(postArr);
+            setProfPost(postArr);
         })
         return unsbs;
     }, [])
 
-    useEffect(() => {
-        console.log("Observer use effect");
-        let videos = document.querySelectorAll(".video");
-        videos.forEach(el => {
-            console.log("el=>", el);
-            observer.observe(el);
-        })
-    }, [posts]);
-
     return (
         <>
             {
-                posts == null ? <>Loading wait...................</> :
-                    < div className='postContainer' >
-                        {posts.map((post, index) => (
-                            <React.Fragment key={index}>
-                                <div className={`post ${post.Type}`}>
-                                    <div className='postHeader'>
-                                        <Avatar className={classes.large} alt="profile image" src={post.UserProfile} ></Avatar>
-                                        <h4 className='uname'>{post.UserName} </h4>
-                                    </div>
-
-                                    <div className='postMedia'>
-                                        {post.Type == 'image' ? <Image source={post.PostUrl} /> : <Video source={post.PostUrl} />}
-                                    </div>
-
-                                    <div className='postDetails'>
-                                        <div className='postFunc'>
-                                            <Like userData={userData} postData={post} className={`${classes.postLike} iconStyling`} />
-                                            <ChatBubbleOutlineIcon className={`${classes.chatBubble} iconStyling`} onClick={() => handleClickOpen(post.PostId)} />
-                                        </div>
-                                        <div className='postAddComment'>
-                                            <AddComments userData={userData} postData={post} />
+                profPosts == null ? <>Loading wait...................</> :
+                    <div className='profilePostContainer'>
+                        {
+                            profPosts.map((post, index) => (
+                                <React.Fragment key={index}>
+                                    <div className={`profilePost ${post.Type}`}>
+                                        <div className='profilePostMedia' onClick={() => handleClickOpen(post.PostId)}>
+                                            {post.Type == 'image' ? <Image source={post.PostUrl} prof={true} /> : <Video source={post.PostUrl} prof={true} />}
                                         </div>
                                         <Dialog maxWidth="md" onClose={handleClose} aria-labelledby="customized-dialog-title" open={openId == post.PostId}>
                                             <MuiDialogTitle className={classes.postDialogBox}>
@@ -182,14 +112,16 @@ function Post({ userData = null }) {
                                                 </div>
                                             </MuiDialogTitle>
                                         </Dialog>
+
                                     </div>
-                                </div>
-                            </React.Fragment>
-                        ))}
-                    </div >
+                                </React.Fragment>
+
+                            ))
+                        }
+                    </div>
             }
         </>
     )
 }
 
-export default Post
+export default Profile

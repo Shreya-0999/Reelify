@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react'
 import NaviBar from './NaviBar';
-import FeedLeftCompo from './FeedLeftCompo';
-import FeedRightCompo from './FeedRightCompo';
+import Profile from '../Profile/Profile';
 import UploadImageFile from '../Post/UploadImageFile';
 import UploadVideoFile from '../Post/UploadVideoFile';
 import Post from '../Post/Post';
+import ArrowBackRoundedIcon from '@material-ui/icons/ArrowBackRounded';
 import { AuthContext } from '../../Context/AuthProvider';
 import { database } from './../../firebase';
 import '../Styles/Feed.css'
@@ -12,7 +12,10 @@ import '../Styles/Feed.css'
 function Feed() {
     console.log("Feed Started");
     const [userData, setUserData] = useState(null);
+    const [profile, setProfile] = useState(false);
     const { currentUser } = useContext(AuthContext);
+
+    
 
     useEffect(() => {
         console.log("Feed Use Effect");
@@ -20,7 +23,6 @@ function Feed() {
             setUserData(doc.data());
         })
     }, [])
-    // console.log("------------FEeEEEDS-----------", userData);
 
     return (
         <>
@@ -30,26 +32,29 @@ function Feed() {
                     : <>
                         <div className='feedBody'>
                             <div className='bodyArea'>
-                                <div className='feedLeftCompo'>
-                                    <FeedLeftCompo userData = {userData} />
+                                <div className='naviBar' >
+                                    <NaviBar />
                                 </div>
 
-                                <div className='middleArea'>
-                                    <div className='naviBar'>
-                                        <NaviBar />
+                                <div className='feed'>
+                                    <div className='feedLeftCompo'>
+                                        <div className='leftFeedPic'>
+                                            <img className='leftFeedimg' src={userData.ProfileUrl} onClick={()=>{setProfile(true)}} />
+                                        </div>
+                                        <h1 className='leftFeedUserName' onClick={()=>{setProfile(true)}}>{userData.Username}</h1>
+                                        <div className='logoutBox'>
+                                            Logout
+                                        </div>
                                     </div>
 
                                     <div className='feedsArea'>
                                         <div className='uploadBtns'>
+                                            {profile == true ? <ArrowBackRoundedIcon onClick={()=>{setProfile(false)}} className='backArrow'/> : <></>}
                                             <UploadImageFile userData={userData} />
                                             <UploadVideoFile userData={userData} />
                                         </div>
-                                        <Post userData={userData} />
+                                        {profile == true ? <Profile userData={userData}/> : <Post userData={userData} />}
                                     </div>
-                                </div>
-
-                                <div className='feedRightCompo'>
-                                    <FeedRightCompo />
                                 </div>
                             </div>
                         </div>

@@ -1,0 +1,34 @@
+.profilePostContainer{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    border-radius: 16px;
+}
+.profilePost{
+    height: 350px;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 25px;
+    border-radius: 16px;
+    cursor: pointer;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.048);
+    border: 1px solid rgba(148, 144, 144, 0.637);
+}
+.profilePost:hover{
+    filter: brightness(80%);
+    background-color: rgba(59, 58, 58, 0.075);
+}
+.profilePostMedia{
+    height: 95%;
+    width: 95%;
+    border-radius: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
