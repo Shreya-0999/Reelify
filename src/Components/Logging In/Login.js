@@ -11,8 +11,10 @@ import IconButton from '@material-ui/core/IconButton';
 import InputLabel from '@material-ui/core/InputLabel';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import './SignUp.css'
-import Logo from './instaLogo.png'
-import mainImage from './mainImage.gif'
+// import Logo from './instaLogo.png'
+import wordLogo from '../Images/word_logo.png'
+import logo from '../Images/logo.png'
+import mainImage from '../Images/login.png'
 import { useHistory } from 'react-router-dom'
 
 
@@ -22,6 +24,7 @@ const useStyles = makeStyles((theme) => ({
     },
     textField: {
         // color:red
+        borderColor: 'grey'
     },
     resize: {
         // fontSize: 10
@@ -30,13 +33,19 @@ const useStyles = makeStyles((theme) => ({
         color: "#4e4a4a"
     },
     uploadBtn: {
-        // width: 300
+        width: 290,
+        borderRadius: '32px',
+        color: '#6e666e',
+        // width: '100%',
     },
     btn: {
-        background: '#F83E65',
-        width: 150,
+        background: 'linear-gradient(to bottom, #a06ded 5%, #845ce0 100%)',
+        width: '100%',
         height: 50,
-        // fontFamily: 'Quicksand, sans-serif'
+        borderRadius: '32px',
+        boxShadow: '0px 10px 14px -7px #ab75d9',
+        backgroundColor: '#a06ded',
+        color: '#ffffff'
     }
 }));
 
@@ -78,87 +87,101 @@ function Login() {
         }
     }
 
-    useEffect(()=>{
-        if(currentUser){
+    const handleRouting = () => {
+        history.push('/signup');
+    }
+
+    useEffect(() => {
+        if (currentUser) {
             history.push('/');
         }
-    },[]);
+    }, []);
 
     return (
         <div className='body'>
-            <div className='main_card'>
-                <div className='card_1'>
-                    <img src={mainImage} alt='' className='logImage'></img>
-                </div>
-
-                <div className='card_2'>
-                    <div className='insta_logo'>
-                        <img src={Logo} alt='Logo'></img>
+            <div className="glass">
+                <div className='main_card'>
+                    <div className='card_1'>
+                        <img src={mainImage} alt='' className='logImage'></img>
                     </div>
-                    <form onSubmit={handleLogin} className='user_data'>
-                        <h4>Login</h4>
-                        <div className='inputfield'>
-                            <TextField
-                                // className={classes.inputfield}
-                                id="outlined-basic"
-                                label="Email"
-                                variant="outlined"
-                                // size='small'
-                                fullWidth
-                                color='secondary'
-                                InputProps={{
-                                    classes: {
-                                        input: classes.resize,
-                                    },
-                                    // startAdornment: (
-                                    //     <InputAdornment position="start">
-                                    //       <AccountCircle />
-                                    //     </InputAdornment>
-                                    // ),
-                                }}
-                                onChange={(e) => setEmail(e.target.value)}
-                            />
-                        </div>
-                        
-                        <div className='inputfield'>
-                            <FormControl variant="outlined" fullWidth color = 'secondary'>
-                                <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
-                                <OutlinedInput
-                                    id="outlined-adornment-password"
-                                    type={values.showPassword ? 'text' : 'password'}
-                                    value={values.password}
-                                    onChange={(e) => setPassword(e.target.value)}
-                                    endAdornment={
-                                        <InputAdornment position="end">
-                                            <IconButton
-                                                aria-label="toggle password visibility"
-                                                onClick={handleClickShowPassword}
-                                                onMouseDown={handleMouseDownPassword}
-                                                edge="end"
-                                            >
-                                                {values.showPassword ? <Visibility /> : <VisibilityOff />}
-                                            </IconButton>
-                                        </InputAdornment>
-                                    }
-                                    labelWidth={70}
-                                />
-                            </FormControl>
-                        </div>
 
-                        <div className='buttons'>
-                            <Button
-                                className={classes.btn}
-                                variant="contained"
-                                color="primary"
-                                disabled={loading}
-                                type='submit'
-                                color='secondary'
-                            >
-                                Login
-                            </Button>
-                            {error ? <h1>{error}</h1> : <></>}
+                    <div className='card_2'>
+                        <div className='reelify_logo'>
+                            <img src={wordLogo} alt='Logo'></img>
+                            <div className="signupLogo">
+                                <img src={logo} alt='Logo' ></img>
+                            </div>
+
                         </div>
-                    </form>
+                        <form onSubmit={handleLogin} className='user_data'>
+                            <h4>Login</h4>
+                            <div className='inputfield'>
+                                <TextField
+                                    // className={classes.inputfield}
+                                    id="outlined-basic"
+                                    label="Email"
+                                    variant="outlined"
+                                    // size='small'
+                                    fullWidth
+                                    color='primary'
+                                    InputProps={{
+                                        classes: {
+                                            input: classes.resize,
+                                        },
+                                        // startAdornment: (
+                                        //     <InputAdornment position="start">
+                                        //       <AccountCircle />
+                                        //     </InputAdornment>
+                                        // ),
+                                    }}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                />
+                            </div>
+
+                            <div className='inputfield'>
+                                <FormControl variant="outlined" fullWidth color='primary'>
+                                    <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+                                    <OutlinedInput
+                                        id="outlined-adornment-password"
+                                        type={values.showPassword ? 'text' : 'password'}
+                                        value={values.password}
+                                        onChange={(e) => setPassword(e.target.value)}
+                                        endAdornment={
+                                            <InputAdornment position="end">
+                                                <IconButton
+                                                    aria-label="toggle password visibility"
+                                                    onClick={handleClickShowPassword}
+                                                    onMouseDown={handleMouseDownPassword}
+                                                    edge="end"
+                                                >
+                                                    {values.showPassword ? <Visibility /> : <VisibilityOff />}
+                                                </IconButton>
+                                            </InputAdornment>
+                                        }
+                                        labelWidth={70}
+                                    />
+                                </FormControl>
+                            </div>
+
+                            <div className='buttons'>
+                                <Button
+                                    className={classes.btn}
+                                    variant="contained"
+                                    color="primary"
+                                    disabled={loading}
+                                    type='submit'
+                                    color='secondary'
+                                >
+                                    Login
+                                </Button>
+                                {error ? <h1>{error}</h1> : <></>}
+                            </div>
+                            <div className='card_3' style={{ justifyContent: 'flex-start' }}>
+                                <h5 onClick={handleRouting} className='routing'>New Member?  SignUp</h5>
+                            </div>
+                        </form>
+                    </div>
+
                 </div>
             </div>
         </div >

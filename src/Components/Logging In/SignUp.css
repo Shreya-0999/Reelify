@@ -2,64 +2,96 @@
 *{
     box-sizing: border-box;
 }
+body{
+    margin: 0;
+    font-family: 'Nunito', sans-serif;
+    color: #3f3f41;
+    filter: brightness(1.08);
+}
 .body{
+    background-image: url('../Images/Bg.png');
+    background-size: cover;
+    
+}
+.glass{
     height: 100vh;
     width: 100vw;
-    margin:0;
-    background-image: radial-gradient(circle, #ddd0d0, #dfcfd0, #e0cdd1, #e1ccd2, #e1cbd4, #e0cbd5, #e0ccd6, #dfccd7, #decdd7, #deced7, #ddcfd7, #dcd0d7);
-    /* background-image: linear-gradient(to right bottom, #cac5cb, #ccc7ce, #cecad1, #d0ccd3, #d2cfd6); */
-    /* background:linear-gradient(40deg, #405ce6a8, #5851dba8, #833ab4a8,  #c13584a8, #e1306ca8, #fd1d1da8); */
-    
-    /* background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
-    background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
-    background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 ); */
-    
-    /* background: linear-gradient(to bottom, #d3dff0 0%, #e4eaf5 50%, #cbd8ee 100%), linear-gradient(to bottom, rgba(0,0,0,0.02) 50%, rgba(255,255,255,0.02) 61%, rgba(0,0,0,0.02) 73%), linear-gradient(33deg, rgba(255,255,255,0.20) 0%, rgba(0,0,0,0.20) 100%);
-    background-blend-mode: normal,color-burn; */
-    
-    /* background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); */
-    /* background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%); */
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'Quicksand', sans-serif;
+    /* From https://css.glass */
+    background: rgba(255, 255, 255, 0.2);
+    background: rgba(216, 220, 255, 0.377);
+    /* background: rgba(210, 224, 255, 0.2); */
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(9px);
+    -webkit-backdrop-filter: blur(9px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+
 }
 
 .main_card{
-    height: 65%;
-    width: 55%;
+    height: 580px;
+    width: 750px;
     display: flex;
-    border-radius: 0.5rem;
-    /* backdrop-filter: blur(10px);
-    z-index: 100; */
-    /* border: 1px solid rgba(73, 72, 72, 0.2);
-    background-color: #d8cbce28; */
+    /* flex-direction: column; */
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.123);
+    border-radius: 16px;
 }
+
 .card_1{
-    height: 100%;
+    height: 90%;
     width: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
+    /* background-color: azure; */
 }
 .logImage{
+    width: 100%;
     height: 100%;
-    border-radius: 0.5rem;
+    object-fit: contain;
 }
 .card_2{
-    height: 100%;
-    width: 40%;
+    height: 90%;
+    width: 50%;
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content:center;
     align-items: center;
-    margin: 0 2rem;
+    margin: 0 30px;
     /* padding: 5px; */
     /* background-color: cornflowerblue; */
 }
-.insta_logo{
+.card_3{
+    height: 5%;
+    width: 90%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 14px;
+    margin-bottom: 10px;
+    color: rgb(99, 100, 100);
+    /* background-color: blueviolet; */
+}
+.routing{
+    height: 15px;
+    width: 85%;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    cursor: pointer;
+    /* margin: 40px 0; */
+    /* background-color: aqua; */
+}
+.routing:hover{
+    transform: scale(1.05);
+}
+.reelify_logo{
     height: 15%;
     width: 100%;
     /* background-color: aqua; */
@@ -69,6 +101,13 @@
     justify-content:center;
     align-items: center;
 
+}
+.signupLogo{
+    height: 60px;
+    width: 60px;
+    padding: 8px;
+    transform: rotate(15deg);
+    /* background-color: azure; */
 }
 img{
     max-height: 100%;
@@ -96,12 +135,14 @@ h4{
     /* background-color: rgb(217, 68, 247); */
 }
 .inputfield{
-    width: 100%;
+    width: 85%;
+    border-color: rgb(94, 95, 95);
     /* background-color: cadetblue; */
 }
 .buttons{
-    width: 100%;
+    width: 85%;
     display: flex;
+    /* flex-direction: column; */
     justify-content:center;
     align-items: center;
     /* background-color: cornflowerblue; */

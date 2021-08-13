@@ -12,9 +12,11 @@ import FormControl from '@material-ui/core/FormControl';
 import IconButton from '@material-ui/core/IconButton';
 import InputLabel from '@material-ui/core/InputLabel';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
+import wordLogo from '../Images/word_logo.png'
+import logo from '../Images/logo.png'
 import './SignUp.css'
-import Logo from './instaLogo.png'
-import mainImage from './mainImage.gif'
+// import Logo from './instaLogo.png'
+import mainImage from '../Images/signup.png'
 import { useHistory } from 'react-router-dom';
 
 
@@ -24,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
     },
     textField: {
         // color:red
+        borderColor: 'grey'
     },
     resize: {
         // fontSize: 10
@@ -32,13 +35,19 @@ const useStyles = makeStyles((theme) => ({
         color: "#4e4a4a"
     },
     uploadBtn: {
-        // width: 300
+        width: 290,
+        borderRadius: '32px',
+        color: '#6e666e',
+        // width: '100%',
     },
     btn: {
-        background: '#F83E65',
-        width: 150,
+        background: 'linear-gradient(to bottom, #a06ded 5%, #845ce0 100%)',
+        width: '100%',
         height: 50,
-        // fontFamily: 'Quicksand, sans-serif'
+        borderRadius: '32px',
+        boxShadow: '0px 10px 14px -7px #ab75d9',
+        backgroundColor: '#a06ded',
+        color: '#ffffff'
     }
 }));
 
@@ -123,145 +132,143 @@ function SignUp() {
         event.preventDefault();
     };
 
-    useEffect(()=>{
+    const handleRouting = () => {
+        history.push('/login');
+    }
+
+    useEffect(() => {
         console.log("UseEffect of Signup");
-        if(currentUser){
+        if (currentUser) {
             history.push('/')
         }
-    },[]);
+    }, []);
 
 
     return (
         <div className='body'>
-            <div className='main_card'>
-                <div className='card_1'>
-                    <img src={mainImage} alt='' className='logImage'></img>
-                </div>
+            <div className="glass">
+                <div className='main_card'>
+                    <div className='card_2'>
+                        <div className='reelify_logo'>
+                            <img src={wordLogo} alt='Logo'></img>
+                            <div className="signupLogo">
+                                <img src={logo} alt='Logo' ></img>
+                            </div>
 
-                <div className='card_2'>
-                    <div className='insta_logo'>
-                        <img src={Logo} alt='Logo'></img>
-                    </div>
-                    <form onSubmit={handleSignUp} className='user_data'>
-                        <h4>Sign up</h4>
-                        <div className='inputfield'>
-                            <TextField
-                                className={classes.textField}
-                                id="outlined-basic"
-                                label="Username"
-                                variant="outlined"
-                                // size='normal'
-                                fullWidth
-                                color='secondary'
-                                InputProps={{
-                                    classes: {
-                                        input: classes.resize,
-                                    },
-                                }}
-                                onChange={(e) => setUserName(e.target.value)}
-                            />
                         </div>
-                        <div className='inputfield'>
-                            <TextField
-                                // className={classes.inputfield}
-                                id="outlined-basic"
-                                label="Email"
-                                variant="outlined"
-                                // size='small'
-                                fullWidth
-                                color='secondary'
-                                InputProps={{
-                                    classes: {
-                                        input: classes.resize,
-                                    },
-                                    // startAdornment: (
-                                    //     <InputAdornment position="start">
-                                    //       <AccountCircle />
-                                    //     </InputAdornment>
-                                    // ),
-                                }}
-                                onChange={(e) => setEmail(e.target.value)}
-                            />
-                        </div>
-                        <div className='inputfield'>
-                            <FormControl variant="outlined" color = 'secondary' fullWidth>
-                                <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
-                                <OutlinedInput
-                                    id="outlined-adornment-password"
-                                    type={values.showPassword ? 'text' : 'password'}
-                                    value={values.password}
-                                    onChange={(e) => setPassword(e.target.value)}
-                                    endAdornment={
-                                        <InputAdornment position="end">
-                                            <IconButton
-                                                aria-label="toggle password visibility"
-                                                onClick={handleClickShowPassword}
-                                                onMouseDown={handleMouseDownPassword}
-                                                edge="end"
-                                            >
-                                                {values.showPassword ? <Visibility /> : <VisibilityOff />}
-                                            </IconButton>
-                                        </InputAdornment>
-                                    }
-                                    labelWidth={70}
-                                />
-                            </FormControl>
-                        </div>
-                        {/* <div className='inputfield'>
-                            <TextField
-                                // className={classes.inputfield}
-                                id="outlined-basic"
-                                label="Password"
-                                variant="outlined"
-                                // size='small'
-                                fullWidth
-                                color='secondary'
-                                InputProps={{
-                                    classes: {
-                                        input: classes.resize,
-                                    },
-                                }}
-                                onChange={(e) => setPassword(e.target.value)}
-                            />
-                        </div> */}
 
-                        <div className='buttons'>
-                            <input
-                                accept="image/*"
-                                className={classes.input}
-                                id="contained-button-file"
-                                multiple
-                                type="file"
-                                onChange={handleProfilePicSubmit}
-                            />
-                            <label htmlFor="contained-button-file">
-                                <Button
-                                    className={classes.uploadBtn}
+                        <form onSubmit={handleSignUp} className='user_data'>
+                            <h4>Sign up</h4>
+                            <div className='inputfield'>
+                                <TextField
+                                    className={classes.textField}
+                                    id="outlined-basic"
+                                    label="Username"
                                     variant="outlined"
-                                    color="secondary"
-                                    component="span"
-                                    startIcon={<CloudUploadIcon />}
-                                    size='large'
-                                >
-                                    Profile Picture
-                                </Button>
-                            </label>
-                        </div>
-                        <div className='buttons'>
-                            <Button
+                                    // size='normal'
+                                    fullWidth
+                                    color='primary'
+                                    InputProps={{
+                                        classes: {
+                                            input: classes.resize,
+                                        },
+                                    }}
+                                    onChange={(e) => setUserName(e.target.value)}
+                                />
+                            </div>
+                            <div className='inputfield'>
+                                <TextField
+                                    // className={classes.inputfield}
+                                    id="outlined-basic"
+                                    label="Email"
+                                    variant="outlined"
+                                    // size='small'
+                                    fullWidth
+                                    color='primaary'
+                                    InputProps={{
+                                        classes: {
+                                            input: classes.resize,
+                                        },
+                                        // startAdornment: (
+                                        //     <InputAdornment position="start">
+                                        //       <AccountCircle />
+                                        //     </InputAdornment>
+                                        // ),
+                                    }}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                />
+                            </div>
+                            <div className='inputfield'>
+                                <FormControl variant="outlined" color='primary' fullWidth>
+                                    <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+                                    <OutlinedInput
+                                        id="outlined-adornment-password"
+                                        type={values.showPassword ? 'text' : 'password'}
+                                        value={values.password}
+                                        onChange={(e) => setPassword(e.target.value)}
+                                        endAdornment={
+                                            <InputAdornment position="end">
+                                                <IconButton
+                                                    aria-label="toggle password visibility"
+                                                    onClick={handleClickShowPassword}
+                                                    onMouseDown={handleMouseDownPassword}
+                                                    edge="end"
+                                                >
+                                                    {values.showPassword ? <Visibility /> : <VisibilityOff />}
+                                                </IconButton>
+                                            </InputAdornment>
+                                        }
+                                        labelWidth={70}
+                                    />
+                                </FormControl>
+                            </div>
 
-                                className={classes.btn}
-                                variant="contained"
-                                color="primary"
-                                disabled={loading}
-                                type='submit'
-                                color='secondary'
-                            >
-                                Sign Up
-                            </Button>
-                            {error ? <h1>{error}</h1> : <></>}
-                        </div>
-                    </form>
+                            <div className='buttons'>
+                                <input
+                                    accept="image/*"
+                                    className={classes.input}
+                                    id="contained-button-file"
+                                    multiple
+                                    type="file"
+                                    onChange={handleProfilePicSubmit}
+                                />
+                                <label htmlFor="contained-button-file">
+                                    <Button
+                                        className={classes.uploadBtn}
+                                        variant="outlined"
+                                        color="purple"
+                                        component="span"
+                                        startIcon={<CloudUploadIcon />}
+                                        size='large'
+                                    >
+                                        Profile Picture
+                                    </Button>
+                                </label>
+                            </div>
+                            <div className='buttons'>
+                                <Button
+
+                                    className={`${classes.btn} logBtn`}
+                                    variant="contained"
+                                    color="primary"
+                                    disabled={loading}
+                                    type='submit'
+                                // color='secondary'
+                                >
+                                    Sign Up
+                                </Button>
+                                {error ? <h1>{error}</h1> : <></>}
+                            </div>
+                            <div className='card_3' style={{ justifyContent: 'flex-start' }}>
+                                <h5 onClick={handleRouting} className='routing'>Already a Member?  Login</h5>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div className='card_1'>
+                        <img src={mainImage} alt='' className='logImage'></img>
+                    </div>
+
                 </div>
             </div>
         </div>

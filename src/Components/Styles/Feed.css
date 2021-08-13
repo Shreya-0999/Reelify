@@ -18,7 +18,8 @@ body{
     justify-content: center;
 }
 .feedBody{
-    background-image: url('./Bg.png');
+    /* background-image: url('./Bg.png'); */
+    background-image: url('../Images/Bg.png');
     background-size: cover;
 }
 .bodyArea{
@@ -73,7 +74,7 @@ body{
     top: 65px;
     z-index: 10;
     /* background-color: azure; */
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.123);
+    /* box-shadow: 0 4px 30px rgba(0, 0, 0, 0.123) inset; */
     /* background: rgba(87, 67, 138, 0.486); */
     /* box-shadow: 0 4px 30px rgba(0, 0, 0, 0.089); */
     /* backdrop-filter: blur(6.7px);
@@ -89,9 +90,6 @@ body{
     cursor: pointer;
     border-radius: 47% 53% 36% 64% / 55% 79% 21% 45% ;
     
-}
-.leftFeedPic:hover{
-    /* animation: profileAnimate 8s infinite ease ; */
 }
 .leftFeedimg{
     width: 100%;
@@ -132,6 +130,7 @@ body{
     align-items: center;
     /* padding: 10px; */
     position: relative;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.123) inset;
     /* box-shadow: 0 4px 30px rgba(0, 0, 0, 0.123); */
 }
 

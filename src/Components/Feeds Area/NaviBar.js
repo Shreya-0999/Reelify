@@ -1,7 +1,7 @@
 import React from 'react'
 import '../Styles/NaviBar.css'
 import logo from '../Images/logo.png'
-import instagram from '../Images/instagram.png'
+import wordLogo from '../Images/word_logo.png'
 
 function NaviBar() {
     return (
@@ -11,7 +11,7 @@ function NaviBar() {
             </div>
             <span className="span"/>
             <div className= 'instagram'>
-                <img src= {instagram}/>
+                <img src= {wordLogo}/>
             </div>
         </div>
     )
