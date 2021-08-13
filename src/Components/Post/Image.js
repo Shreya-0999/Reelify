@@ -6,6 +6,7 @@ function Image(props) {
             {
                 props.prof ?
                     <img
+                        className='img'
                         src={props.source}
                         style={{
                             height: '100%',
@@ -16,10 +17,15 @@ function Image(props) {
                     />
                     :
                     <img
+                        className='img'
                         src={props.source}
                         style={{
-                            maxHeight: '100%',
-                            maxWidth: '100%',
+                            // maxHeight: '100%',
+                            // maxWidth: '100%',
+                            height: '100%',
+                            width: '100%',
+                            // borderRadius: "16px",
+                            objectFit: 'cover'
                         }}
                     />
             }

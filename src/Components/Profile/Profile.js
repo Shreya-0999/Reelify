@@ -7,6 +7,8 @@ import CardHeader from '@material-ui/core/CardHeader';
 import Typography from '@material-ui/core/Typography';
 import Dialog from '@material-ui/core/Dialog';
 import MuiDialogTitle from '@material-ui/core/DialogTitle';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
 import IconButton from '@material-ui/core/IconButton';
 import Card from '@material-ui/core/Card';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
@@ -14,6 +16,7 @@ import Image from '../Post/Image';
 import Video from '../Post/Video';
 import Comments from '../Post/Comments';
 import AddComments from '../Post/AddComments';
+import LoadingIcon from '../Images/loading1.gif'
 import Like from '../Post/Like';
 import '../Styles/profile.css'
 
@@ -26,11 +29,51 @@ function Profile({ userData }) {
     const classes = useStyles();
     const [openId, setOpenId] = useState(null);
     const [profPosts, setProfPost] = useState(null);
+    const [anchorEl, setAnchorEl] = React.useState(null);
+    const open = Boolean(anchorEl);
     const handleClickOpen = (id) => {
         setOpenId(id);
     };
     const handleClose = () => {
         setOpenId(null);
+    };
+
+    const handleMenu = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleDeleteClose = (post) => {
+        if (post.UserId == userData.Uid) {
+            // delete post comments, update userdata
+            const obj = userData.Posts.filter((el) => {
+                return el != post.PostId
+            })
+
+            // update user
+            console.log(obj);
+            database.users.doc(userData.Uid).update({
+                Posts: obj
+            })
+
+            // comment
+            post.Comment.map(async (el) => {
+                await database.comments.doc(el).delete();
+            })
+
+            // post
+            database.posts.doc(post.PostId).delete().then(() => {
+                console.log("Document successfully deleted!");
+            }).catch((error) => {
+                console.error("Error removing document: ", error);
+            });
+        }
+        else {
+            // error msg
+        }
+        setAnchorEl(null);
+    }
+    const handleCloseA = () => {
+        setAnchorEl(null);
     };
 
     useEffect(() => {
@@ -53,7 +96,11 @@ function Profile({ userData }) {
     return (
         <>
             {
-                profPosts == null ? <>Loading wait...................</> :
+                profPosts == null ?
+                    <div className='feedLoading'>
+                        <img src={LoadingIcon} />
+                    </div>
+                    :
                     <div className='profilePostContainer'>
                         {
                             profPosts.map((post, index) => (
@@ -85,9 +132,34 @@ function Profile({ userData }) {
                                                                     </Avatar>
                                                                 }
                                                                 action={
-                                                                    <IconButton aria-label="settings">
-                                                                        <MoreVertIcon />
-                                                                    </IconButton>
+                                                                    <div className='optionBox'>
+                                                                        <IconButton
+                                                                            aria-label="more"
+                                                                            aria-controls="long-menu"
+                                                                            aria-haspopup="true"
+                                                                            onClick={handleMenu}
+                                                                        >
+                                                                            <MoreVertIcon />
+                                                                        </IconButton>
+                                                                        <Menu
+                                                                            id="menu-appbar"
+                                                                            anchorEl={anchorEl}
+                                                                            anchorOrigin={{
+                                                                                vertical: 'top',
+                                                                                horizontal: 'right',
+                                                                            }}
+                                                                            keepMounted
+                                                                            transformOrigin={{
+                                                                                vertical: 'top',
+                                                                                horizontal: 'right',
+                                                                            }}
+                                                                            open={open}
+                                                                            onClose={handleCloseA}
+                                                                        >
+                                                                            <MenuItem onClick={() => { handleDeleteClose(post) }}>Delete</MenuItem>
+                                                                            <MenuItem onClick={handleClose}>Profile</MenuItem>
+                                                                        </Menu>
+                                                                    </div>
                                                                 }
                                                                 title={post?.UserName}
                                                                 className={classes.dialogHeader}

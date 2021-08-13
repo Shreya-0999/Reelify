@@ -26,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function UploadImageFile(props) {
+    console.log("Upload Image starts");
     const classes = useStyles();
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);

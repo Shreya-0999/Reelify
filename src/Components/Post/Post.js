@@ -7,16 +7,20 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import CardContent from '@material-ui/core/CardContent';
 import CardHeader from '@material-ui/core/CardHeader';
 import Typography from '@material-ui/core/Typography';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
 import Avatar from '@material-ui/core/Avatar';
 import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
 import { database } from '../../firebase';
 import { makeStyles } from '@material-ui/core/styles';
 import Comments from './Comments';
 import AddComments from './AddComments';
+import LoadingIcon from '../Images/loading1.gif'
 import Image from './Image';
 import Video from './Video';
 import Like from './Like';
 import '../Styles/post.css'
+
 
 const useStyles = makeStyles((theme) => ({
     chatBubble: {
@@ -61,7 +65,47 @@ function Post({ userData = null }) {
     const [posts, setPost] = useState(null);
     const classes = useStyles();
     const [openId, setOpenId] = useState(null);
-    // const history = useHistory();
+
+    const [anchorEl, setAnchorEl] = React.useState(null);
+    const open = Boolean(anchorEl);
+
+    const handleMenu = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleDeleteClose = (post) => {
+        if (post.UserId == userData.Uid) {
+            // delete post comments, update userdata
+            const obj = userData.Posts.filter((el) => {
+                return el != post.PostId
+            })
+
+            // update user
+            console.log(obj);
+            database.users.doc(userData.Uid).update({
+                Posts: obj
+            })
+
+            // comment
+            post.Comment.map(async (el) => {
+                await database.comments.doc(el).delete();
+            })
+
+            // post
+            database.posts.doc(post.PostId).delete().then(() => {
+                console.log("Document successfully deleted!");
+            }).catch((error) => {
+                console.error("Error removing document: ", error);
+            });
+        }
+        else {
+            // error msg
+        }
+        setAnchorEl(null);
+    }
+    const handleCloseA = () => {
+        setAnchorEl(null);
+    };
 
     const handleClickOpen = (id) => {
         setOpenId(id);
@@ -74,6 +118,9 @@ function Post({ userData = null }) {
         enteries.forEach(element => {
             // console.log("enteries", element);
             let el = element.target.childNodes[1].childNodes[0];
+            console.log("enteries el", el);
+            // console.log(el.classlist);
+            // if(el.classlist != "img")
             el.play().then(() => {
                 console.log("play");
                 if (!el.paused && !element.isIntersecting) {
@@ -95,7 +142,7 @@ function Post({ userData = null }) {
             })
             setPost(postArr);
         })
-        return unsbs;
+        // return unsbs;
     }, [])
 
     useEffect(() => {
@@ -105,12 +152,18 @@ function Post({ userData = null }) {
             console.log("el=>", el);
             observer.observe(el);
         })
+        return () => {
+            observer.disconnect();
+        }
     }, [posts]);
 
     return (
         <>
             {
-                posts == null ? <>Loading wait...................</> :
+                posts == null ?
+                    <div className='feedLoading'>
+                        <img src={LoadingIcon} />
+                    </div> :
                     < div className='postContainer' >
                         {posts.map((post, index) => (
                             <React.Fragment key={index}>
@@ -120,7 +173,7 @@ function Post({ userData = null }) {
                                         <h4 className='uname'>{post.UserName} </h4>
                                     </div>
 
-                                    <div className='postMedia'>
+                                    <div className='postMedia' >
                                         {post.Type == 'image' ? <Image source={post.PostUrl} /> : <Video source={post.PostUrl} />}
                                     </div>
 
@@ -155,9 +208,33 @@ function Post({ userData = null }) {
                                                                     </Avatar>
                                                                 }
                                                                 action={
-                                                                    <IconButton aria-label="settings">
-                                                                        <MoreVertIcon />
-                                                                    </IconButton>
+                                                                    <div className='optionBox'>
+                                                                        <IconButton
+                                                                            aria-label="more"
+                                                                            aria-controls="long-menu"
+                                                                            aria-haspopup="true"
+                                                                            onClick={handleMenu}
+                                                                        >
+                                                                            <MoreVertIcon />
+                                                                        </IconButton>
+                                                                        <Menu
+                                                                            id="menu-appbar"
+                                                                            anchorEl={anchorEl}
+                                                                            anchorOrigin={{
+                                                                                vertical: 'top',
+                                                                                horizontal: 'right',
+                                                                            }}
+                                                                            keepMounted
+                                                                            transformOrigin={{
+                                                                                vertical: 'top',
+                                                                                horizontal: 'right',
+                                                                            }}
+                                                                            open={open}
+                                                                            onClose={handleCloseA}
+                                                                        >
+                                                                            <MenuItem onClick={() => { handleDeleteClose(post) }}>Delete</MenuItem>
+                                                                        </Menu>
+                                                                    </div>
                                                                 }
                                                                 title={post?.UserName}
                                                                 className={classes.dialogHeader}

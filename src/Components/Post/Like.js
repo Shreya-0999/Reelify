@@ -19,7 +19,6 @@ const useStyles = makeStyles({
 
 function Like({ userData = null, postData = null }) {
     console.log("Like start");
-    // console.log("Likesss:::",userData);
     const classes = useStyles();
     const [like, setLike] = useState(null);
 
@@ -42,10 +41,7 @@ function Like({ userData = null, postData = null }) {
 
     // error
     useEffect(() => {
-        // console.log(":::::::::::::::::::",postData.Likes);
-        // console.log(":::::::::USERDATA::::::::::",userData);
         let check = postData?.Likes.includes(userData?.Uid) ? true : false;
-        console.log(check);
         setLike(check);
     }, [postData])
 
@@ -63,4 +59,4 @@ function Like({ userData = null, postData = null }) {
     )
 }
 
-export default Like
+export default React.memo(Like)

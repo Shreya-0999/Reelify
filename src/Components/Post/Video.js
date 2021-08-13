@@ -32,10 +32,13 @@ function Video(props) {
                 autoPlay
                 loop
                 style={{
-                    maxHeight: '100%',
-                    maxWidth: '100%',
-                    borderRadius: "1rem",
-                    // objectFit: 'fill'
+                    // maxHeight: '100%',
+                    // maxWidth: '100%',
+                    // borderRadius: "1rem",
+                    // // objectFit: 'fill'
+                    height:'100%',
+                    width:'100%',
+                    objectFit: 'cover'
                 }}
             />
             }

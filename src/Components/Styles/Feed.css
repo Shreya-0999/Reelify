@@ -10,15 +10,22 @@ body{
     filter: brightness(1.08);
     /* font-weight: 900; */
 }
+.feedLoading{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .feedBody{
     background-image: url('./Bg.png');
     background-size: cover;
 }
 .bodyArea{
-    background: rgba(199, 188, 188, 0.21);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
+    background: rgba(209, 197, 197, 0.21);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.123);
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
     border: 1px solid rgba(199, 188, 188, 0.41);
     height: 100vh;
     width: 100vw;
@@ -29,7 +36,7 @@ body{
 }
 .naviBar{
     width: 100%;
-    height: 100px;
+    /* height: 100px; */
     /* position: sticky; */
     position: -webkit-sticky;
     position: sticky;
@@ -48,13 +55,14 @@ body{
     /* background-color: aqua; */
 }
 .feed{
+    /* background-color: aquamarine; */
     display: flex;
 }
 
 .feedLeftCompo{
     width: 35%;
-    height: 500px;
-    margin: 20px;
+    height: 630px;
+    /* margin: 20px; */
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -62,9 +70,11 @@ body{
     position: -webkit-sticky;
     position: sticky;
     left:0;
-    top: 100px;
+    top: 65px;
     z-index: 10;
-    /* background: rgba(222, 215, 240, 0.486); */
+    /* background-color: azure; */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.123);
+    /* background: rgba(87, 67, 138, 0.486); */
     /* box-shadow: 0 4px 30px rgba(0, 0, 0, 0.089); */
     /* backdrop-filter: blur(6.7px);
     -webkit-backdrop-filter: blur(6.7px); */
@@ -77,9 +87,11 @@ body{
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    /* background-color: aqua; */
     border-radius: 47% 53% 36% 64% / 55% 79% 21% 45% ;
     
+}
+.leftFeedPic:hover{
+    /* animation: profileAnimate 8s infinite ease ; */
 }
 .leftFeedimg{
     width: 100%;
@@ -87,14 +99,23 @@ body{
     border-radius: 47% 53% 36% 64% / 55% 79% 21% 45% ;
     object-fit: cover;
 }
+.leftFeedimg:hover{
+    animation: profileAnimate 8s infinite ease ;
+}
+
 .leftFeedUserName{
     height: 100px;
-    width: 100%;
     margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 3rem;
+    cursor: pointer;
+}
+.logoutBox{
+    position: absolute;
+    bottom: 0px;
+    /* left: 10px; */
     cursor: pointer;
 }
 .backArrow{
@@ -109,15 +130,33 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 10px;
+    /* padding: 10px; */
     position: relative;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.123);
-    border-right: 1px solid rgba(158, 156, 156, 0.637);
+    /* box-shadow: 0 4px 30px rgba(0, 0, 0, 0.123); */
 }
 
 .uploadBtns{
     height: 10%;
-    width: 100%;
+    width: 600px;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
+    margin-top: 25px;
+}
+
+@keyframes profileAnimate {
+    0%{
+        border-radius: 47% 53% 36% 64% / 55% 79% 21% 45% ;
+    }
+    25%{
+        border-radius: 60% 40% 76% 24% / 51% 55% 45% 49%  ;
+    }
+    50%{
+        border-radius:39% 61% 46% 54% / 62% 72% 28% 38% ;
+    }
+    75%{
+        border-radius: 60% 40% 76% 24% / 51% 55% 45% 49%  ;
+    }
+    100%{
+        border-radius: 47% 53% 36% 64% / 55% 79% 21% 45% ;
+    }
 }
