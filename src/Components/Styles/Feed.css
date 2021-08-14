@@ -23,11 +23,13 @@ body{
     background-size: cover;
 }
 .bodyArea{
-    background: rgba(209, 197, 197, 0.21);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.123);
-    backdrop-filter: blur(7px);
-    -webkit-backdrop-filter: blur(7px);
-    border: 1px solid rgba(199, 188, 188, 0.41);
+    background: rgba(216, 220, 255, 0.377);
+    /* background: rgba(210, 224, 255, 0.2); */
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(9px);
+    -webkit-backdrop-filter: blur(9px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     height: 100vh;
     width: 100vw;
     display: flex;
@@ -37,8 +39,6 @@ body{
 }
 .naviBar{
     width: 100%;
-    /* height: 100px; */
-    /* position: sticky; */
     position: -webkit-sticky;
     position: sticky;
     top:0;
@@ -46,14 +46,16 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    /* background-color: #ccccdbe3; */
     background-color: #d6d6e9e3;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.048);
-    /* box-shadow: 0 4px 30px rgba(159, 152, 255, 0.932); */
     border-bottom: 1px solid rgba(168, 164, 164, 0.637);
     -webkit-backdrop-filter: blur(6px); 
     backdrop-filter: blur(6px);
-    /* background-color: aqua; */
+    background: linear-gradient(to bottom, #cdbde6ef 5%, #d1c2f7ef 100%);
+    box-shadow: 0px 10px 14px -7px #ddc3f5;
+    background-color: #d6befa;
+    /* box-shadow: 0 3px 9px rgba(65, 64, 64, 0.2),
+    0 8px 15px rgba(0,0,0,.2); */
 }
 .feed{
     /* background-color: aquamarine; */
@@ -71,14 +73,8 @@ body{
     position: -webkit-sticky;
     position: sticky;
     left:0;
-    top: 65px;
+    top: 85px;
     z-index: 10;
-    /* background-color: azure; */
-    /* box-shadow: 0 4px 30px rgba(0, 0, 0, 0.123) inset; */
-    /* background: rgba(87, 67, 138, 0.486); */
-    /* box-shadow: 0 4px 30px rgba(0, 0, 0, 0.089); */
-    /* backdrop-filter: blur(6.7px);
-    -webkit-backdrop-filter: blur(6.7px); */
 }
 
 .leftFeedPic{
@@ -96,6 +92,8 @@ body{
     height: 100%;
     border-radius: 47% 53% 36% 64% / 55% 79% 21% 45% ;
     object-fit: cover;
+    box-shadow: 0 3px 9px rgba(65, 64, 64, 0.2),
+    0 8px 15px rgba(0,0,0,.2);
 }
 .leftFeedimg:hover{
     animation: profileAnimate 8s infinite ease ;
@@ -135,12 +133,23 @@ body{
 }
 
 .uploadBtns{
-    height: 10%;
-    width: 600px;
+    height: 50px;
+    width: 180px;
+    border-radius: 2rem;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    align-items: center;
     margin-top: 25px;
+    background: linear-gradient(to bottom, #a06ded 5%, #845ce0 100%) ;
+    
 }
+.backBtn{
+    height: 20px;
+    width: 100%;
+    margin-top: 10px;
+    /* color: ; */
+}
+
 
 @keyframes profileAnimate {
     0%{

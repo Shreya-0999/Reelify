@@ -5,7 +5,8 @@
 body{
     margin: 0;
     font-family: 'Nunito', sans-serif;
-    color: #3f3f41;
+    /* color: #3f3f41; */
+    color: rgb(99, 100, 100);
     filter: brightness(1.08);
 }
 .body{
@@ -20,7 +21,7 @@ body{
     justify-content: center;
     align-items: center;
     /* From https://css.glass */
-    background: rgba(255, 255, 255, 0.2);
+    /* background: rgba(255, 255, 255, 0.2); */
     background: rgba(216, 220, 255, 0.377);
     /* background: rgba(210, 224, 255, 0.2); */
     border-radius: 16px;
@@ -33,7 +34,7 @@ body{
 
 .main_card{
     height: 580px;
-    width: 750px;
+    width: 780px;
     display: flex;
     /* flex-direction: column; */
     justify-content: center;
@@ -48,7 +49,6 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    /* background-color: azure; */
 }
 .logImage{
     width: 100%;
@@ -64,29 +64,34 @@ body{
     justify-content:center;
     align-items: center;
     margin: 0 30px;
-    /* padding: 5px; */
-    /* background-color: cornflowerblue; */
+}
+.card_4{
+    height: 90%;
+    width: 50%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+    margin: 0 30px;
 }
 .card_3{
     height: 5%;
-    width: 90%;
+    width: 85%;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
     font-size: 14px;
     margin-bottom: 10px;
     color: rgb(99, 100, 100);
-    /* background-color: blueviolet; */
 }
 .routing{
     height: 15px;
-    width: 85%;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content:center;
     cursor: pointer;
-    /* margin: 40px 0; */
-    /* background-color: aqua; */
 }
 .routing:hover{
     transform: scale(1.05);
@@ -94,9 +99,6 @@ body{
 .reelify_logo{
     height: 15%;
     width: 100%;
-    /* background-color: aqua; */
-    /* position: relative; */
-    /* top: -30px; */
     display: flex;
     justify-content:center;
     align-items: center;
@@ -107,43 +109,41 @@ body{
     width: 60px;
     padding: 8px;
     transform: rotate(15deg);
-    /* background-color: azure; */
 }
 img{
     max-height: 100%;
     max-width: 100%;
 }
-h4{
+.subHeaderLogin{
     height: 8%;
-    width: 100%;
+    width: 85%;
     margin: 0;
-    color: #363636;
-    /* color: #4e4a4a; */
     font-size: 1.2rem;
     display: flex;
     justify-content:flex-start;
     align-items: center;
-    /* background-color: bisque; */
 }
 .user_data{
-    height: 80%;
+    height: 85%;
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    align-items:flex-start;
-    /* background-color: rgb(217, 68, 247); */
+    align-items:center;
 }
 .inputfield{
     width: 85%;
     border-color: rgb(94, 95, 95);
-    /* background-color: cadetblue; */
 }
 .buttons{
     width: 85%;
     display: flex;
-    /* flex-direction: column; */
+    flex-direction: column;
     justify-content:center;
     align-items: center;
-    /* background-color: cornflowerblue; */
+}
+.loginError{
+    font-size: 18px;
+    color:rgb(252, 81, 81);
+    margin: 0;
 }

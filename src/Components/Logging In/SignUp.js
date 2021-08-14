@@ -36,7 +36,6 @@ const useStyles = makeStyles((theme) => ({
     },
     uploadBtn: {
         width: 290,
-        borderRadius: '32px',
         color: '#6e666e',
         // width: '100%',
     },
@@ -148,7 +147,7 @@ function SignUp() {
         <div className='body'>
             <div className="glass">
                 <div className='main_card'>
-                    <div className='card_2'>
+                    <div className='card_4'>
                         <div className='reelify_logo'>
                             <img src={wordLogo} alt='Logo'></img>
                             <div className="signupLogo">
@@ -158,7 +157,7 @@ function SignUp() {
                         </div>
 
                         <form onSubmit={handleSignUp} className='user_data'>
-                            <h4>Sign up</h4>
+                            <h4 className='subHeaderLogin'>Sign up</h4>
                             <div className='inputfield'>
                                 <TextField
                                     className={classes.textField}
@@ -257,8 +256,8 @@ function SignUp() {
                                 >
                                     Sign Up
                                 </Button>
-                                {error ? <h1>{error}</h1> : <></>}
                             </div>
+                            {error ? <h4 className='loginError'>{error}</h4> : <></>}
                             <div className='card_3' style={{ justifyContent: 'flex-start' }}>
                                 <h5 onClick={handleRouting} className='routing'>Already a Member?  Login</h5>
                             </div>

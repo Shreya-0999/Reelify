@@ -114,7 +114,7 @@ function Login() {
 
                         </div>
                         <form onSubmit={handleLogin} className='user_data'>
-                            <h4>Login</h4>
+                            <h4 className='subHeaderLogin'>Login</h4>
                             <div className='inputfield'>
                                 <TextField
                                     // className={classes.inputfield}
@@ -174,10 +174,10 @@ function Login() {
                                 >
                                     Login
                                 </Button>
-                                {error ? <h1>{error}</h1> : <></>}
                             </div>
-                            <div className='card_3' style={{ justifyContent: 'flex-start' }}>
-                                <h5 onClick={handleRouting} className='routing'>New Member?  SignUp</h5>
+                            {error ? <h4 className='loginError'>{error}</h4> : <></>}
+                            <div className='card_3' >
+                                <h5 onClick={handleRouting} className='routing' >New Member?  SignUp</h5>
                             </div>
                         </form>
                     </div>

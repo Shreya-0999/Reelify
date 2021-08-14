@@ -5,22 +5,15 @@ import VideocamRoundedIcon from '@material-ui/icons/VideocamRounded';
 import Alert from '@material-ui/lab/Alert';
 import { makeStyles } from '@material-ui/core/styles';
 import LinearProgress from '@material-ui/core/LinearProgress';
-import '../Styles/uploadBtn.css'
 import {v4 as uuidv4} from 'uuid'
 
 const useStyles = makeStyles((theme) => ({
-    uploadBtn: {
+    videoBtn: {
         height: '70%',
-        width: 200,
-        fontSize: 18,
+        width: '50%',
+        // fontSize: 18,
         fontFamily: `'Nunito', sans-serif`,
         fontWeight: 100,
-        color: "#3f3f41",
-        background:" rgba(181, 185, 255, 0.41)",
-        boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
-        border: "1px solid rgba(184, 149, 239, 0.65)",
-        backdropFilter: "blur(6px)",
-        WebkitBackdropFilter:"blur(6px)",
         borderRadius: "2rem"
     }
 
@@ -130,15 +123,14 @@ function UploadVideoFile(props) {
                     />
                     <label htmlFor="icon-button-file">
                         <Button
-                            className={classes.uploadBtn}
+                            className={classes.videoBtn}
                             // variant="outlined"
                             // color="secondary"
                             component="span"
                             size='medium'
                             disabled={loading}
-                            startIcon={<VideocamRoundedIcon style={{ fontSize: 30 }} />}
+                            endIcon={<VideocamRoundedIcon style={{ fontSize: 35, color:'whitesmoke' }} />}
                         >
-                            Video
                         </Button>
                         {loading ? <LinearProgress /> : <></>}
                     </label>

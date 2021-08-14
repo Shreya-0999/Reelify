@@ -27,6 +27,7 @@
     backdrop-filter: blur(6px); */
    
     border: 1px solid rgba(148, 144, 144, 0.637);
+    
 }
 .postHeader{
     height: 60px;
@@ -34,6 +35,7 @@
     display: flex;
     margin-bottom: 10px;
     border-bottom: 1px solid rgba(168, 164, 164, 0.637);
+    
 }
 .postMedia{
     /* height: 80%; */

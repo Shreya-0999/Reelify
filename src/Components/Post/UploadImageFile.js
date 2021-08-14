@@ -4,22 +4,16 @@ import ImageRoundedIcon from '@material-ui/icons/ImageRounded';
 import Alert from '@material-ui/lab/Alert';
 import { makeStyles } from '@material-ui/core/styles';
 import LinearProgress from '@material-ui/core/LinearProgress';
-import '../Styles/uploadBtn.css'
 import { v4 as uuidv4 } from 'uuid'
 import { database, storage } from '../../firebase';
 
 const useStyles = makeStyles((theme) => ({
-    uploadBtn: {
+    imageBtn: {
         height: '70%',
-        width: 200,
-        fontSize: 18,
+        width: "50%",
+        // fontSize: 18,
         fontFamily: `'Nunito', sans-serif`,
         fontWeight: 100,
-        background:" rgba(181, 185, 255, 0.41)",
-        boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
-        border: "1px solid rgba(184, 149, 239, 0.65)",
-        backdropFilter: "blur(6px)",
-        WebkitBackdropFilter:"blur(6px)",
         borderRadius: "2rem"
     }
 
@@ -120,15 +114,14 @@ function UploadImageFile(props) {
                     />
                     <label htmlFor="contained-button-file">
                         <Button
-                            className={classes.uploadBtn}
+                            className={classes.imageBtn}
                             // variant="contained"
                             // color="secondary"
                             component="span"
                             size='medium'
                             disabled={loading}
-                            startIcon={<ImageRoundedIcon style={{ fontSize: 30 }} />}
+                            startIcon={<ImageRoundedIcon style={{ fontSize: 30, color:'whitesmoke' }} />}
                         >
-                            Image
                         </Button>
                     </label>
                     {loading ? <LinearProgress /> : <></>}

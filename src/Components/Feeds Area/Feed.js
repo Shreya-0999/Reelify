@@ -45,17 +45,27 @@ function Feed() {
                                             <img className='leftFeedimg' src={userData.ProfileUrl} onClick={() => { setProfile(true) }} />
                                         </div>
                                         <h1 className='leftFeedUserName' onClick={() => { setProfile(true) }}>{userData.Username}</h1>
+
+                                        <div className='uploadbtn'>
+
+                                            <div className="uploadBtns">
+                                                <UploadImageFile userData={userData} />
+                                                <UploadVideoFile userData={userData} />
+                                            </div>
+
+                                            <div className='menu'></div>
+                                        </div>
+
                                         <div className='logoutBox' onClick={() => { logout() }}>
                                             Logout
                                         </div>
                                     </div>
 
                                     <div className='feedsArea'>
-                                        <div className='uploadBtns'>
+                                        <div className='backBtn'>
                                             {profile == true ? <ArrowBackRoundedIcon onClick={() => { setProfile(false) }} className='backArrow' /> : <></>}
-                                            <UploadImageFile userData={userData} />
-                                            <UploadVideoFile userData={userData} />
                                         </div>
+
                                         {profile == true ? <Profile userData={userData} /> : <Post userData={userData} />}
                                     </div>
                                 </div>
