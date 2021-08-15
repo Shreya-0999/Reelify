@@ -3,8 +3,8 @@ import Button from '@material-ui/core/Button';
 import ImageRoundedIcon from '@material-ui/icons/ImageRounded';
 import Alert from '@material-ui/lab/Alert';
 import { makeStyles } from '@material-ui/core/styles';
-import LinearProgress from '@material-ui/core/LinearProgress';
 import { v4 as uuidv4 } from 'uuid'
+import CircularProgress from '@material-ui/core/CircularProgress';
 import { database, storage } from '../../firebase';
 
 const useStyles = makeStyles((theme) => ({
@@ -15,6 +15,10 @@ const useStyles = makeStyles((theme) => ({
         fontFamily: `'Nunito', sans-serif`,
         fontWeight: 100,
         borderRadius: "2rem"
+    },
+    progress: {
+        position: 'absolute',
+        top: '60px'
     }
 
 }));
@@ -120,14 +124,14 @@ function UploadImageFile(props) {
                             component="span"
                             size='medium'
                             disabled={loading}
-                            startIcon={<ImageRoundedIcon style={{ fontSize: 30, color:'whitesmoke' }} />}
+                            startIcon={<ImageRoundedIcon style={{ fontSize: 30, color: 'whitesmoke' }} />}
                         >
                         </Button>
                     </label>
-                    {loading ? <LinearProgress /> : <></>}
                 </>
                 }
             </div>
+            {loading ? <CircularProgress className={classes.progress} /> : <></>}
         </>
 
     )

@@ -29,12 +29,14 @@ const useStyles = makeStyles((theme) => ({
         fontSize: '32px'
     },
     typo: {
-        marginLeft: '2%'
+        marginLeft: '2%',
+        marginTop: "0",
     },
     large: {
         width: theme.spacing(5),
         height: theme.spacing(5),
-        margin: '8px'
+        margin: '8px',
+        boxShadow: '0 3px 9px rgba(65, 64, 64, 0.2), 0 8px 15px rgba(0,0,0,.2)'
     },
     postDialogBox: {
         background: "rgba(222, 215, 240, 0.486)",
@@ -44,18 +46,13 @@ const useStyles = makeStyles((theme) => ({
         WebkitBackdropFilter: "blur(6.7px)"
     },
     dialogHeader: {
-        height: "10vh"
+        height: "8vh"
     },
     dialogComments: {
-        height: "52vh",
-        background: "rgba(222, 215, 240, 0.486)",
-        boxShadow: " 0 4px 30px rgba(0, 0, 0, 0.1)",
-        backdropFilter: "blur(6.7px)",
-        WebkitBackdropFilter: "blur(6.7px)",
+        height: "55vh",
         fontFamily: "'Nunito', sans-serif",
-        border: "none"
-
     },
+    
 
 }))
 
@@ -243,17 +240,17 @@ function Post({ userData = null }) {
 
                                                             <hr style={{ border: "none", height: "1px", color: "#dfe6e9", backgroundColor: "#dfe6e9" }} />
                                                             <CardContent className={classes.dialogComments}>
-
                                                                 <Comments userData={userData} postData={post} />
                                                             </CardContent>
-
                                                         </Card>
                                                         <div className='extra'>
                                                             <div className='likes'>
                                                                 <Like userData={userData} postData={post} />
-                                                                <Typography className={classes.typo} variant='body2'>Liked By {post.Likes.length == 0 ? 'nobody' : ` others`}</Typography>
+                                                                <Typography className={classes.typo} variant='body2'>{post.Likes.length} </Typography>
                                                             </div>
-                                                            <AddComments userData={userData} postData={post} />
+                                                            <div className='profileCommentBox'>
+                                                                <AddComments userData={userData} postData={post} />
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>

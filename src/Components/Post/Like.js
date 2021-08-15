@@ -46,7 +46,7 @@ function Like({ userData = null, postData = null }) {
     }, [postData])
 
     return (
-        <div className='like'>
+        <div className='like' style={{ marginBottom: '0px', height: '50%'}}>
             {
                 like != null
                     ? <>{like == false

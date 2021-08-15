@@ -46,17 +46,13 @@ function Feed() {
                                         </div>
                                         <h1 className='leftFeedUserName' onClick={() => { setProfile(true) }}>{userData.Username}</h1>
 
-                                        <div className='uploadbtn'>
-
-                                            <div className="uploadBtns">
-                                                <UploadImageFile userData={userData} />
-                                                <UploadVideoFile userData={userData} />
-                                            </div>
-
-                                            <div className='menu'></div>
+                                        <div className="uploadBtns">
+                                            <UploadImageFile userData={userData} />
+                                            <UploadVideoFile userData={userData} />
                                         </div>
 
                                         <div className='logoutBox' onClick={() => { logout() }}>
+                                            <span className='tooltiptext'>Come back soon :)</span>
                                             Logout
                                         </div>
                                     </div>

@@ -31,7 +31,7 @@ function Comments({ userData = null, postData = null }) {
         <>
             {
                 comments == null
-                    ? <><h2>Loading............Please wait</h2></>
+                    ? <CircularProgress/>
                     :
                     comments.map((comment, index) => (
                         <div key={index} className='comment-div'>

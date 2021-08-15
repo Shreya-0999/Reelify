@@ -4,8 +4,8 @@ import { database, storage } from '../../firebase';
 import VideocamRoundedIcon from '@material-ui/icons/VideocamRounded';
 import Alert from '@material-ui/lab/Alert';
 import { makeStyles } from '@material-ui/core/styles';
-import LinearProgress from '@material-ui/core/LinearProgress';
-import {v4 as uuidv4} from 'uuid'
+import CircularProgress from '@material-ui/core/CircularProgress';
+import { v4 as uuidv4 } from 'uuid'
 
 const useStyles = makeStyles((theme) => ({
     videoBtn: {
@@ -15,6 +15,10 @@ const useStyles = makeStyles((theme) => ({
         fontFamily: `'Nunito', sans-serif`,
         fontWeight: 100,
         borderRadius: "2rem"
+    },
+    progress: {
+        position: 'absolute',
+        top: '60px'
     }
 
 }));
@@ -56,8 +60,8 @@ function UploadVideoFile(props) {
             }, 2000)
             return
         }
-        
-        try{
+
+        try {
             setLoading(true);
             const id = uuidv4();
             const uploadVideoTask = storage.ref(`/posts/${props.userData.Uid}/videos/${file.name}`).put(file);
@@ -76,7 +80,7 @@ function UploadVideoFile(props) {
                 setLoading(false)
             }
 
-            async function fn3(){
+            async function fn3() {
                 console.log("Uploading video ");
                 const videoURL = await uploadVideoTask.snapshot.ref.getDownloadURL();
                 console.log("video url: ", videoURL);
@@ -87,7 +91,7 @@ function UploadVideoFile(props) {
                     UserId: props.userData.Uid,
                     UserName: props.userData.Username,
                     UserProfile: props.userData.ProfileUrl,
-                    Comment:[],
+                    Comment: [],
                     Likes: [],
                     CreatedAt: database.getCurrentTimeStamp()
                 })
@@ -101,9 +105,9 @@ function UploadVideoFile(props) {
             }
 
         }
-        catch(e){
+        catch (e) {
             setError(e);
-            setTimeout(()=>{
+            setTimeout(() => {
                 setError(null);
             }, 2000);
             setLoading(false);
@@ -129,14 +133,14 @@ function UploadVideoFile(props) {
                             component="span"
                             size='medium'
                             disabled={loading}
-                            endIcon={<VideocamRoundedIcon style={{ fontSize: 35, color:'whitesmoke' }} />}
+                            endIcon={<VideocamRoundedIcon style={{ fontSize: 35, color: 'whitesmoke' }} />}
                         >
                         </Button>
-                        {loading ? <LinearProgress /> : <></>}
                     </label>
                 </>
                 }
             </div>
+            {loading ? <CircularProgress className={classes.progress} /> : <></>}
         </>
 
     )

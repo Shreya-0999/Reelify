@@ -113,12 +113,33 @@ body{
     bottom: 0px;
     /* left: 10px; */
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: rgba(180, 179, 179, 0.199);
+    /* color: rgb(165, 56, 255); */
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    box-shadow: 0 3px 9px rgba(65, 64, 64, 0.2),
+    0 8px 15px rgba(0,0,0,.2);
+    position: absolute;
+    bottom: 25px;
+}
+.logoutBox:hover .tooltiptext {
+    visibility: visible;
 }
 .backArrow{
     position: absolute;
     left: 10px;
     cursor: pointer;
-
+}
+.backArrow:hover{
+    transform: scale(1.01);
 }
 .feedsArea{
     width: 100%;
@@ -140,14 +161,20 @@ body{
     justify-content: center;
     align-items: center;
     margin-top: 25px;
+    position: relative;
     background: linear-gradient(to bottom, #a06ded 5%, #845ce0 100%) ;
-    
+    box-shadow: 0 3px 9px rgba(65, 64, 64, 0.2),
+    0 8px 15px rgba(0,0,0,.2);
 }
 .backBtn{
     height: 20px;
     width: 100%;
     margin-top: 10px;
     /* color: ; */
+}
+.backBtn:hover{
+    transform: scale(1.01);
+    
 }
 
 
