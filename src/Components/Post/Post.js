@@ -11,7 +11,7 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Avatar from '@material-ui/core/Avatar';
 import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
-import { database } from '../../firebase';
+import { storage, database } from '../../firebase';
 import { makeStyles } from '@material-ui/core/styles';
 import Comments from './Comments';
 import AddComments from './AddComments';
@@ -52,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
         height: "55vh",
         fontFamily: "'Nunito', sans-serif",
     },
-    
+
 
 }))
 
@@ -72,13 +72,14 @@ function Post({ userData = null }) {
 
     const handleDeleteClose = (post) => {
         if (post.UserId == userData.Uid) {
-            // delete post comments, update userdata
+            // delete -> comments -> data from storage -> post, update userdata
+
             const obj = userData.Posts.filter((el) => {
                 return el != post.PostId
             })
 
             // update user
-            console.log(obj);
+            // console.log(obj);
             database.users.doc(userData.Uid).update({
                 Posts: obj
             })
@@ -87,6 +88,16 @@ function Post({ userData = null }) {
             post.Comment.map(async (el) => {
                 await database.comments.doc(el).delete();
             })
+
+            // storage
+            let storageRef = storage.refFromURL(post.PostUrl)
+            console.log(storageRef.name);
+
+            storageRef.delete().then(() => {
+                console.log("Succesfully Deleted");
+            }).catch((error) => {
+                // error
+            });
 
             // post
             database.posts.doc(post.PostId).delete().then(() => {
@@ -100,6 +111,7 @@ function Post({ userData = null }) {
         }
         setAnchorEl(null);
     }
+
     const handleCloseA = () => {
         setAnchorEl(null);
     };
@@ -107,17 +119,15 @@ function Post({ userData = null }) {
     const handleClickOpen = (id) => {
         setOpenId(id);
     };
+
     const handleClose = () => {
         setOpenId(null);
     };
 
     const callbacks = enteries => {
         enteries.forEach(element => {
-            // console.log("enteries", element);
             let el = element.target.childNodes[1].childNodes[0];
             console.log("enteries el", el);
-            // console.log(el.classlist);
-            // if(el.classlist != "img")
             el.play().then(() => {
                 console.log("play");
                 if (!el.paused && !element.isIntersecting) {

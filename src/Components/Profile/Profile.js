@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { database } from '../../firebase';
+import { database, storage } from '../../firebase';
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 import CardContent from '@material-ui/core/CardContent';
@@ -88,6 +88,16 @@ function Profile({ userData }) {
                 await database.comments.doc(el).delete();
             })
 
+
+            let storageRef = storage.refFromURL(post.PostUrl)
+            console.log(storageRef.name);
+
+            storageRef.delete().then(() => {
+                console.log("Succesfully Deleted");
+            }).catch((error) => {
+                // error
+            });
+
             // post
             database.posts.doc(post.PostId).delete().then(() => {
                 console.log("Document successfully deleted!");
@@ -97,6 +107,7 @@ function Profile({ userData }) {
         }
         else {
             // error msg
+            alert("Please delete your own post")
         }
         setAnchorEl(null);
     }

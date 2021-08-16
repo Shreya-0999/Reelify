@@ -25,6 +25,9 @@ function Comments({ userData = null, postData = null }) {
             com.push(data.data());
         }
         setComments(com);
+        
+        // won't render when the comments are deleted hence no error
+        return ()=>{setComments('')}
     }, [postData])
     
     return (

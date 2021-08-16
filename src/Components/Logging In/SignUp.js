@@ -15,7 +15,6 @@ import OutlinedInput from '@material-ui/core/OutlinedInput';
 import wordLogo from '../Images/word_logo.png'
 import logo from '../Images/logo.png'
 import './SignUp.css'
-// import Logo from './instaLogo.png'
 import mainImage from '../Images/signup.png'
 import { useHistory } from 'react-router-dom';
 
@@ -76,13 +75,11 @@ function SignUp() {
     }
 
     const handleSignUp = async (e) => {
-        console.log("hi")
         e.preventDefault();
         setLoading(true);
         try {
             let res = await signUp(email, password);
             let uid = res.user.uid;
-            console.log(uid);
 
             // storing profile image
             const uploadTaskListener = storage.ref(`/users/${uid}/Profile Picture`).put(profilePic);
@@ -101,7 +98,7 @@ function SignUp() {
 
             async function fn3() {
                 let downloadUrl = await uploadTaskListener.snapshot.ref.getDownloadURL();
-                console.log("profile picture url: ", downloadUrl);
+                
                 await database.users.doc(uid).set({
                     Username: userName,
                     Uid: uid,
