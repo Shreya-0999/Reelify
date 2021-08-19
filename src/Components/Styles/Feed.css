@@ -23,7 +23,7 @@ body{
     background-size: cover;
 }
 .bodyArea{
-    background: rgba(216, 220, 255, 0.377);
+    background: rgba(216, 220, 255, 0.295);
     /* background: rgba(210, 224, 255, 0.2); */
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -38,6 +38,7 @@ body{
     position: relative;
 }
 .naviBar{
+    height: 8.5%;
     width: 100%;
     position: -webkit-sticky;
     position: sticky;
@@ -46,14 +47,15 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #d6d6e9e3;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.048);
+    /* background-color: #d6d6e9e3; */
+    /* box-shadow: 0 4px 30px rgba(0, 0, 0, 0.048); */
     border-bottom: 1px solid rgba(168, 164, 164, 0.637);
     -webkit-backdrop-filter: blur(6px); 
     backdrop-filter: blur(6px);
     background: linear-gradient(to bottom, #cdbde6ef 5%, #d1c2f7ef 100%);
     box-shadow: 0px 10px 14px -7px #ddc3f5;
     background-color: #d6befa;
+    /* background-color: aqua; */
     /* box-shadow: 0 3px 9px rgba(65, 64, 64, 0.2),
     0 8px 15px rgba(0,0,0,.2); */
 }
@@ -63,7 +65,7 @@ body{
 }
 
 .feedLeftCompo{
-    width: 35%;
+    width: 30%;
     height: 630px;
     /* margin: 20px; */
     display: flex;
@@ -78,8 +80,8 @@ body{
 }
 
 .leftFeedPic{
-    height: 270px;
-    width: 270px;
+    height: 220px;
+    width: 220px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -100,39 +102,16 @@ body{
 }
 
 .leftFeedUserName{
-    height: 100px;
-    margin: 0;
+    height: 70px;
+    margin: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 3rem;
+    font-size: 2rem;
     cursor: pointer;
+    /* background-color: aqua; */
 }
-.logoutBox{
-    position: absolute;
-    bottom: 0px;
-    /* left: 10px; */
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.tooltiptext {
-    visibility: hidden;
-    width: 120px;
-    background-color: rgba(180, 179, 179, 0.199);
-    /* color: rgb(165, 56, 255); */
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px 0;
-    box-shadow: 0 3px 9px rgba(65, 64, 64, 0.2),
-    0 8px 15px rgba(0,0,0,.2);
-    position: absolute;
-    bottom: 25px;
-}
-.logoutBox:hover .tooltiptext {
-    visibility: visible;
-}
+
 .backArrow{
     position: absolute;
     left: 10px;
@@ -155,13 +134,15 @@ body{
 
 .uploadBtns{
     height: 50px;
-    width: 180px;
+    width: 60%;
     border-radius: 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 25px;
-    position: relative;
+    margin: 25px;
+    position: absolute;
+    bottom: 0;
+    
     background: linear-gradient(to bottom, #a06ded 5%, #845ce0 100%) ;
     box-shadow: 0 3px 9px rgba(65, 64, 64, 0.2),
     0 8px 15px rgba(0,0,0,.2);

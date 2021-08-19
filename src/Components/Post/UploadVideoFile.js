@@ -9,12 +9,11 @@ import { v4 as uuidv4 } from 'uuid'
 
 const useStyles = makeStyles((theme) => ({
     videoBtn: {
-        height: '70%',
-        width: '50%',
+        height: '100%',
+        width: '100%',
         // fontSize: 18,
         fontFamily: `'Nunito', sans-serif`,
         fontWeight: 100,
-        borderRadius: "2rem"
     },
     progress: {
         position: 'absolute',
@@ -116,7 +115,7 @@ function UploadVideoFile(props) {
 
     return (
         <>
-            <div className='upload'>
+            <div className='upload' style={{width:'50%'}}>
                 {error != null ? <Alert severity="error">{error}</Alert> : <>
                     <input
                         // className={classes.input}
@@ -125,7 +124,7 @@ function UploadVideoFile(props) {
                         type="file"
                         onChange={handleVideoFile}
                     />
-                    <label htmlFor="icon-button-file">
+                    <label htmlFor="icon-button-file" style={{width:'100%'}}>
                         <Button
                             className={classes.videoBtn}
                             // variant="outlined"
@@ -133,7 +132,7 @@ function UploadVideoFile(props) {
                             component="span"
                             size='medium'
                             disabled={loading}
-                            endIcon={<VideocamRoundedIcon style={{ fontSize: 35, color: 'whitesmoke' }} />}
+                            startIcon={<VideocamRoundedIcon style={{ fontSize: 35, color: 'whitesmoke' }} />}
                         >
                         </Button>
                     </label>

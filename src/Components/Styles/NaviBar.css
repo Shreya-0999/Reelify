@@ -1,13 +1,27 @@
 .navImage{
-    height: 95%;
-    width: 40%;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: aquamarine; */
+}
+.side1{
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    width: 95%;
+}
+.side2{
+    height: 100%;
+    width: 5%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .logo{
-    height: 55px;
-    width: 55px;
+    height: 45px;
+    width: 45px;
     padding: 8px;
     right: 4px;
     position: relative;
@@ -18,7 +32,7 @@
 }
 .navName{
     height: 100%;
-    width: 25%;
+    /* width: 25%; */
     padding: 7px;
     display: flex;
     justify-content: flex-end;
@@ -28,3 +42,7 @@ img{
     max-height: 100%;
     max-width: 100%;
 }
+
+/* .logoutBox{
+    background-color: aquamarine;
+} */

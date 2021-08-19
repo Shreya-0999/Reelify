@@ -9,12 +9,11 @@ import { database, storage } from '../../firebase';
 
 const useStyles = makeStyles((theme) => ({
     imageBtn: {
-        height: '70%',
-        width: "50%",
+        height: '100%',
+        width: "100%",
         // fontSize: 18,
         fontFamily: `'Nunito', sans-serif`,
         fontWeight: 100,
-        borderRadius: "2rem"
     },
     progress: {
         position: 'absolute',
@@ -107,7 +106,7 @@ function UploadImageFile(props) {
 
     return (
         <>
-            <div className='upload'>
+            <div className='upload' style={{width:'50%'}}>
                 {error != null ? <Alert severity="error">{error}</Alert> : <>
                     <input
                         // className={classes.input}
@@ -124,7 +123,7 @@ function UploadImageFile(props) {
                             component="span"
                             size='medium'
                             disabled={loading}
-                            startIcon={<ImageRoundedIcon style={{ fontSize: 30, color: 'whitesmoke' }} />}
+                            endIcon={<ImageRoundedIcon style={{ fontSize: 30, color: 'whitesmoke' }} />}
                         >
                         </Button>
                     </label>

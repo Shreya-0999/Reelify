@@ -13,7 +13,7 @@ const useStyles = makeStyles({
     unlike: {
         color: '#3f3f41',
         cursor: 'pointer',
-        fontSize:'32px'
+        fontSize:'32px',
     }
 })
 
@@ -46,7 +46,7 @@ function Like({ userData = null, postData = null }) {
     }, [postData])
 
     return (
-        <div className='like' style={{ marginBottom: '0px', height: '50%'}}>
+        <div className='like' style={{ display:'flex', justifyContent:'center'}}>
             {
                 like != null
                     ? <>{like == false

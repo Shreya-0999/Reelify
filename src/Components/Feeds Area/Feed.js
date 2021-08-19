@@ -50,11 +50,6 @@ function Feed() {
                                             <UploadImageFile userData={userData} />
                                             <UploadVideoFile userData={userData} />
                                         </div>
-
-                                        <div className='logoutBox' onClick={() => { logout() }}>
-                                            <span className='tooltiptext'>Come back soon :)</span>
-                                            Logout
-                                        </div>
                                     </div>
 
                                     <div className='feedsArea'>

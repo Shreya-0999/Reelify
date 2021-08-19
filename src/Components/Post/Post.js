@@ -26,11 +26,12 @@ const useStyles = makeStyles((theme) => ({
     chatBubble: {
         color: '#3f3f41',
         cursor: 'pointer',
-        fontSize: '32px'
+        fontSize: '32px',
     },
     typo: {
         marginLeft: '2%',
         marginTop: "0",
+        display:'flex'
     },
     large: {
         width: theme.spacing(5),
@@ -256,7 +257,7 @@ function Post({ userData = null }) {
                                                         <div className='extra'>
                                                             <div className='likes'>
                                                                 <Like userData={userData} postData={post} />
-                                                                <Typography className={classes.typo} variant='body2'>{post.Likes.length} </Typography>
+                                                                <Typography className={classes.typo} variant='body2'>{post.Likes.length} Likes</Typography>
                                                             </div>
                                                             <div className='profileCommentBox'>
                                                                 <AddComments userData={userData} postData={post} />

@@ -76,7 +76,7 @@
 }
 
 .iconStyling{
-    margin: 10px;
+    margin:10px;
 }
 
 .uname{
@@ -130,5 +130,7 @@
 }
 .likes{
     height: 80%;
-    /* background-color: rgb(200, 206, 206); */
+    width: 8%;
+    padding: 5px;
+    background-color: rgb(200, 206, 206);
 }
