@@ -10,7 +10,7 @@ import FormControl from '@material-ui/core/FormControl';
 import IconButton from '@material-ui/core/IconButton';
 import InputLabel from '@material-ui/core/InputLabel';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
-import './SignUp.css'
+import '../Styles/SignUp.css'
 // import Logo from './instaLogo.png'
 import wordLogo from '../Images/word_logo.png'
 import logo from '../Images/logo.png'

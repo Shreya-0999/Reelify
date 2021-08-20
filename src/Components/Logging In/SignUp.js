@@ -14,7 +14,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import wordLogo from '../Images/word_logo.png'
 import logo from '../Images/logo.png'
-import './SignUp.css'
+import '../Styles/SignUp.css'
 import mainImage from '../Images/signup.png'
 import { useHistory } from 'react-router-dom';
 
@@ -54,6 +54,7 @@ function SignUp() {
 
     const classes = useStyles();
     const [userName, setUserName] = useState('');
+    const [fullName, setFullName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [profilePic, setProfilePic] = useState(null);
@@ -101,10 +102,12 @@ function SignUp() {
                 
                 await database.users.doc(uid).set({
                     Username: userName,
+                    Full_Name: fullName,
                     Uid: uid,
                     Email: email,
                     ProfileUrl: downloadUrl,
                     Posts: [],
+                    Bio: 'Add Bio',
                     Created_At: database.getCurrentTimeStamp()
                 })
                 setLoading(false);
@@ -155,6 +158,23 @@ function SignUp() {
 
                         <form onSubmit={handleSignUp} className='user_data'>
                             <h4 className='subHeaderLogin'>Sign up</h4>
+                            <div className='inputfield'>
+                                <TextField
+                                    className={classes.textField}
+                                    id="outlined-basic"
+                                    label="Full Name"
+                                    variant="outlined"
+                                    // size='normal'
+                                    fullWidth
+                                    color='primary'
+                                    InputProps={{
+                                        classes: {
+                                            input: classes.resize,
+                                        },
+                                    }}
+                                    onChange={(e) => setFullName(e.target.value)}
+                                />
+                            </div>
                             <div className='inputfield'>
                                 <TextField
                                     className={classes.textField}

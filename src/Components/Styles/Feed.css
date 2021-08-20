@@ -68,6 +68,7 @@ body{
     width: 30%;
     height: 630px;
     /* margin: 20px; */
+    padding: 10px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -107,7 +108,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 2rem;
+    font-size: 1.7rem;
     cursor: pointer;
     /* background-color: aqua; */
 }
@@ -134,7 +135,7 @@ body{
 
 .uploadBtns{
     height: 50px;
-    width: 60%;
+    width: 80%;
     border-radius: 2rem;
     display: flex;
     justify-content: center;
@@ -158,7 +159,6 @@ body{
     
 }
 
-
 @keyframes profileAnimate {
     0%{
         border-radius: 47% 53% 36% 64% / 55% 79% 21% 45% ;
@@ -175,4 +175,120 @@ body{
     100%{
         border-radius: 47% 53% 36% 64% / 55% 79% 21% 45% ;
     }
+}
+
+
+.pbox1{
+    height: 25%;
+    width: 100%;
+}
+.pbox2{
+    height: 16%;
+    width: 100%;
+    padding: 5px;
+    margin: 5px;
+}
+.pbox3{
+    height: 25%;
+    width: 100%;
+    padding: 10px;
+    margin: 0 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* background-color: rgb(194, 143, 78); */
+}
+.pPageimgbox{
+    height: 100%;
+    /* width: ; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 47% 53% 36% 64% / 55% 79% 21% 45% ;
+}
+.pPageimg{
+    max-height: 100%;
+    max-width: 100%;
+    border-radius: 47% 53% 36% 64% / 55% 79% 21% 45% ;
+}
+
+.pbox21{
+    height: 40%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 19px;
+    outline: none;
+}
+.pbox22{
+    height: 30%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.pbox23{
+    height: 30%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+}
+.pbox231{
+    margin: 0;
+    color: #686968;
+}
+.pbox211{
+    margin: 0;
+    font-size: 1.2rem;
+    color: rgb(44, 43, 43);
+}
+.editBtn{
+    padding: 5px;
+    background-color: rgb(44, 43, 43);
+    color: rgb(228, 228, 228);
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    border-radius: 5px;
+    margin: 10px;
+    cursor: pointer;
+    letter-spacing: 1px;
+    font-size: 14px;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.pbox31{
+    height: 20%;
+    width: 90%;
+
+}
+.pbox32{
+    height: 77%;
+    width: 90%;
+    /* outline: 1px solid gray; */
+    outline: none;
+    font-size: 14px;
+    /* font-weight: 900; */
+    color: #686968;
+    overflow: auto;
+}
+.pbox32::-webkit-scrollbar {
+    display: none;
+  }
+
+.pbox311{
+    margin: 0;
+    color: rgb(44, 43, 43);
+    font-size: 15px;
+}
+.pbox4{
+    /* height: 50%; */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

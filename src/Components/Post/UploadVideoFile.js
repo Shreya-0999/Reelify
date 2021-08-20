@@ -17,7 +17,11 @@ const useStyles = makeStyles((theme) => ({
     },
     progress: {
         position: 'absolute',
-        top: '60px'
+        bottom: '60px'
+    },
+    alertBox:{
+        position:'absolute',
+        bottom: '60px',
     }
 
 }));
@@ -115,8 +119,9 @@ function UploadVideoFile(props) {
 
     return (
         <>
+            {loading ? <CircularProgress className={classes.progress} /> : <></>}
             <div className='upload' style={{width:'50%'}}>
-                {error != null ? <Alert severity="error">{error}</Alert> : <>
+                {error != null ? <Alert severity="error" className={classes.alertBox}>{error}</Alert> : <>
                     <input
                         // className={classes.input}
                         style={{ display: 'none' }}
@@ -139,7 +144,6 @@ function UploadVideoFile(props) {
                 </>
                 }
             </div>
-            {loading ? <CircularProgress className={classes.progress} /> : <></>}
         </>
 
     )
