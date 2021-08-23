@@ -26,7 +26,7 @@ function AuthProvider({ children }) {
         }).catch((err)=>{         
         })
     }
-
+    // **
     const value = {
         currentUser,
         signUp,
