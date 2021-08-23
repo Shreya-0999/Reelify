@@ -23,12 +23,7 @@ const useStyles = makeStyles((theme) => ({
     input: {
         display: 'none',
     },
-    textField: {
-        // color:red
-        borderColor: 'grey'
-    },
     resize: {
-        // fontSize: 10
         fontFamily: 'Quicksand, sans-serif',
         fontWeight: "700",
         color: "#4e4a4a"
@@ -36,7 +31,6 @@ const useStyles = makeStyles((theme) => ({
     uploadBtn: {
         width: 290,
         color: '#6e666e',
-        // width: '100%',
     },
     btn: {
         background: 'linear-gradient(to bottom, #a06ded 5%, #845ce0 100%)',
@@ -50,7 +44,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function SignUp() {
-    console.log("Sign Up Start");
 
     const classes = useStyles();
     const [userName, setUserName] = useState('');
@@ -72,7 +65,6 @@ function SignUp() {
         if (file) {
             setProfilePic(file);
         }
-        console.log("Profile Selected");
     }
 
     const handleSignUp = async (e) => {
@@ -112,11 +104,9 @@ function SignUp() {
                 })
                 setLoading(false);
                 history.push('/');
-                console.log(('User has Signed in '));
             }
         }
         catch (e) {
-            console.log(e)
             setError(e.message);
             setTimeout(() => { setError('') }, 3000);
             setLoading(false);
@@ -136,7 +126,6 @@ function SignUp() {
     }
 
     useEffect(() => {
-        console.log("UseEffect of Signup");
         if (currentUser) {
             history.push('/')
         }
@@ -160,11 +149,9 @@ function SignUp() {
                             <h4 className='subHeaderLogin'>Sign up</h4>
                             <div className='inputfield'>
                                 <TextField
-                                    className={classes.textField}
                                     id="outlined-basic"
                                     label="Full Name"
                                     variant="outlined"
-                                    // size='normal'
                                     fullWidth
                                     color='primary'
                                     InputProps={{
@@ -177,11 +164,9 @@ function SignUp() {
                             </div>
                             <div className='inputfield'>
                                 <TextField
-                                    className={classes.textField}
                                     id="outlined-basic"
                                     label="Username"
                                     variant="outlined"
-                                    // size='normal'
                                     fullWidth
                                     color='primary'
                                     InputProps={{
@@ -194,22 +179,15 @@ function SignUp() {
                             </div>
                             <div className='inputfield'>
                                 <TextField
-                                    // className={classes.inputfield}
                                     id="outlined-basic"
                                     label="Email"
                                     variant="outlined"
-                                    // size='small'
                                     fullWidth
-                                    color='primaary'
+                                    color='primary'
                                     InputProps={{
                                         classes: {
                                             input: classes.resize,
                                         },
-                                        // startAdornment: (
-                                        //     <InputAdornment position="start">
-                                        //       <AccountCircle />
-                                        //     </InputAdornment>
-                                        // ),
                                     }}
                                     onChange={(e) => setEmail(e.target.value)}
                                 />
@@ -252,7 +230,6 @@ function SignUp() {
                                     <Button
                                         className={classes.uploadBtn}
                                         variant="outlined"
-                                        color="purple"
                                         component="span"
                                         startIcon={<CloudUploadIcon />}
                                         size='large'
@@ -269,7 +246,6 @@ function SignUp() {
                                     color="primary"
                                     disabled={loading}
                                     type='submit'
-                                // color='secondary'
                                 >
                                     Sign Up
                                 </Button>

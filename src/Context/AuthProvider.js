@@ -3,7 +3,6 @@ import { auth } from '../firebase';
 
 export const AuthContext = React.createContext()
 function AuthProvider({ children }) {
-    console.log("Auth Provider Function Starts");
     const [currentUser, setCurrentUser] = useState();
     const [loading, setLoading] = useState(true);
 
@@ -19,18 +18,27 @@ function AuthProvider({ children }) {
         return auth.signOut();
     }
 
+    function deleteAccount(){
+        let user = auth.currentUser
+        user.delete().then(()=>{
+            console.log(" successfully deleted ");
+            return true;
+        }).catch((err)=>{         
+        })
+    }
+
     const value = {
         currentUser,
         signUp,
         login,
-        logout
+        logout,
+        deleteAccount
     }
 
     useEffect(() => {
         console.log("AuthProvider Use effect");
 
         const unsubs = auth.onAuthStateChanged(user => {
-            console.log("onAuthStateChanged in provider")
             setCurrentUser(user);
             setLoading(false);
         })
@@ -42,7 +50,6 @@ function AuthProvider({ children }) {
 
     return (
         <AuthContext.Provider value={value}>
-            {console.log("AuthContext.Provider Running")}
             {!loading && children}
         </AuthContext.Provider>
     )

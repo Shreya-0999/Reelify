@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
     typo: {
         marginLeft: '2%',
         marginTop: "0",
-        display:'flex'
+        display: 'flex'
     },
     large: {
         width: theme.spacing(5),
@@ -47,11 +47,12 @@ const useStyles = makeStyles((theme) => ({
         WebkitBackdropFilter: "blur(6.7px)"
     },
     dialogHeader: {
-        height: "8vh"
+        height: "11%",
     },
     dialogComments: {
-        height: "55vh",
+        height: "67%",
         fontFamily: "'Nunito', sans-serif",
+        overflow:'auto'
     },
 
 
@@ -59,7 +60,6 @@ const useStyles = makeStyles((theme) => ({
 
 
 function Post({ userData = null }) {
-    console.log("Post started ");
     const [posts, setPost] = useState(null);
     const classes = useStyles();
     const [openId, setOpenId] = useState(null);
@@ -70,48 +70,6 @@ function Post({ userData = null }) {
     const handleMenu = (event) => {
         setAnchorEl(event.currentTarget);
     };
-
-    const handleDeleteClose = (post) => {
-        if (post.UserId == userData.Uid) {
-            // delete -> comments -> data from storage -> post, update userdata
-
-            const obj = userData.Posts.filter((el) => {
-                return el != post.PostId
-            })
-
-            // update user
-            // console.log(obj);
-            database.users.doc(userData.Uid).update({
-                Posts: obj
-            })
-
-            // comment
-            post.Comment.map(async (el) => {
-                await database.comments.doc(el).delete();
-            })
-
-            // storage
-            let storageRef = storage.refFromURL(post.PostUrl)
-            console.log(storageRef.name);
-
-            storageRef.delete().then(() => {
-                console.log("Succesfully Deleted");
-            }).catch((error) => {
-                // error
-            });
-
-            // post
-            database.posts.doc(post.PostId).delete().then(() => {
-                console.log("Document successfully deleted!");
-            }).catch((error) => {
-                console.error("Error removing document: ", error);
-            });
-        }
-        else {
-            // error msg
-        }
-        setAnchorEl(null);
-    }
 
     const handleCloseA = () => {
         setAnchorEl(null);
@@ -128,9 +86,7 @@ function Post({ userData = null }) {
     const callbacks = enteries => {
         enteries.forEach(element => {
             let el = element.target.childNodes[1].childNodes[0];
-            console.log("enteries el", el);
             el.play().then(() => {
-                console.log("play");
                 if (!el.paused && !element.isIntersecting) {
                     el.pause();
                 }
@@ -140,7 +96,6 @@ function Post({ userData = null }) {
     const observer = new IntersectionObserver(callbacks, { threshold: 0.8 });   // chnage
 
     useEffect(() => {
-        console.log("Post use effect 1");
         let postArr = [];
         let unsbs = database.posts.orderBy('CreatedAt', 'desc').onSnapshot(allPostSnap => {
             postArr = [];
@@ -150,14 +105,11 @@ function Post({ userData = null }) {
             })
             setPost(postArr);
         })
-        // return unsbs;
     }, [])
 
     useEffect(() => {
-        console.log("Observer use effect");
         let videos = document.querySelectorAll(".video");
         videos.forEach(el => {
-            console.log("el=>", el);
             observer.observe(el);
         })
         return () => {
@@ -209,51 +161,20 @@ function Post({ userData = null }) {
                                                         }
                                                     </div>
                                                     <div className='info-part'>
-                                                        <Card>
-                                                            <CardHeader
-                                                                avatar={
-                                                                    <Avatar src={post?.UserProfile} aria-label="recipe" className={classes.avatar}>
-                                                                    </Avatar>
-                                                                }
-                                                                action={
-                                                                    <div className='optionBox'>
-                                                                        <IconButton
-                                                                            aria-label="more"
-                                                                            aria-controls="long-menu"
-                                                                            aria-haspopup="true"
-                                                                            onClick={handleMenu}
-                                                                        >
-                                                                            <MoreVertIcon />
-                                                                        </IconButton>
-                                                                        <Menu
-                                                                            id="menu-appbar"
-                                                                            anchorEl={anchorEl}
-                                                                            anchorOrigin={{
-                                                                                vertical: 'top',
-                                                                                horizontal: 'right',
-                                                                            }}
-                                                                            keepMounted
-                                                                            transformOrigin={{
-                                                                                vertical: 'top',
-                                                                                horizontal: 'right',
-                                                                            }}
-                                                                            open={open}
-                                                                            onClose={handleCloseA}
-                                                                        >
-                                                                            <MenuItem onClick={() => { handleDeleteClose(post) }}>Delete</MenuItem>
-                                                                        </Menu>
-                                                                    </div>
-                                                                }
-                                                                title={post?.UserName}
-                                                                className={classes.dialogHeader}
+                                                        <CardHeader
+                                                            avatar={
+                                                                <Avatar src={post?.UserProfile} aria-label="recipe" className={classes.avatar}>
+                                                                </Avatar>
+                                                            }
+                                                            title={post?.UserName}
+                                                            className={classes.dialogHeader}
+                                                        />
 
-                                                            />
+                                                        <hr style={{ border: "none", height: "1px", color: "#dfe6e9", backgroundColor: "#dfe6e9" }} />
+                                                        <CardContent className={classes.dialogComments}>
+                                                            <Comments userData={userData} postData={post} />
+                                                        </CardContent>
 
-                                                            <hr style={{ border: "none", height: "1px", color: "#dfe6e9", backgroundColor: "#dfe6e9" }} />
-                                                            <CardContent className={classes.dialogComments}>
-                                                                <Comments userData={userData} postData={post} />
-                                                            </CardContent>
-                                                        </Card>
                                                         <div className='extra'>
                                                             <div className='likes'>
                                                                 <Like userData={userData} postData={post} />

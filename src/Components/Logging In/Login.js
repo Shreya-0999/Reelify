@@ -11,7 +11,6 @@ import IconButton from '@material-ui/core/IconButton';
 import InputLabel from '@material-ui/core/InputLabel';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import '../Styles/SignUp.css'
-// import Logo from './instaLogo.png'
 import wordLogo from '../Images/word_logo.png'
 import logo from '../Images/logo.png'
 import mainImage from '../Images/login.png'
@@ -50,7 +49,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Login() {
-    console.log("login Start");
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
@@ -75,10 +73,8 @@ function Login() {
         setLoading(true);
         try {
             let res = await login(email, password);
-            console.log(res.user);
             setLoading(false);
             history.push('/');
-            console.log("user logged in");
         }
         catch (e) {
             setError(e.message);

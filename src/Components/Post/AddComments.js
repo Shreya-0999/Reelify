@@ -19,7 +19,6 @@ const useStyles = makeStyles({
 });
 
 function AddComments({ userData = null, postData = null }) {
-    console.log("AddComments start");
     const classes = useStyles();
     const [text, setText] = useState('');
     const [emoji, setEmoji] = useState(false);
@@ -40,7 +39,6 @@ function AddComments({ userData = null, postData = null }) {
                 Comment: [...postData.Comment, docRef.id]
             })
         }).catch(e => {
-            console.log(e);
         })
         setText('');
     }
@@ -57,7 +55,6 @@ function AddComments({ userData = null, postData = null }) {
     };
 
     return (
-        // emoji npm
         <div className='commentField'>
             <div className='emojis' onClick={handleEmoji}>
                 <InsertEmoticonRoundedIcon className={classes.emoticons} />

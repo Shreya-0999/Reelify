@@ -18,7 +18,6 @@ const useStyles = makeStyles({
 })
 
 function Like({ userData = null, postData = null }) {
-    console.log("Like start");
     const classes = useStyles();
     const [like, setLike] = useState(null);
 
@@ -39,14 +38,13 @@ function Like({ userData = null, postData = null }) {
         }
     }
 
-    // error
     useEffect(() => {
         let check = postData?.Likes.includes(userData?.Uid) ? true : false;
         setLike(check);
     }, [postData])
 
     return (
-        <div className='like' style={{ display:'flex', justifyContent:'center'}}>
+        <div className='like' style={{ display:'flex', justifyContent:'flex-start'}}>
             {
                 like != null
                     ? <>{like == false

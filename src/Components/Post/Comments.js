@@ -17,7 +17,6 @@ function Comments({ userData = null, postData = null }) {
     const [comments, setComments] = useState(null);
 
     useEffect(async () => {
-        console.log("Comment Display Use Effect");
         let com = [];
         for (let i = 0; i < postData.Comment.length; i++) {
             let commentId = postData.Comment[i];
@@ -25,21 +24,24 @@ function Comments({ userData = null, postData = null }) {
             com.push(data.data());
         }
         setComments(com);
-        
+
         // won't render when the comments are deleted hence no error
-        return ()=>{setComments('')}
+        return () => { setComments('') }
     }, [postData])
-    
+
     return (
         <>
             {
                 comments == null
-                    ? <CircularProgress/>
+                    ? <CircularProgress />
                     :
                     comments.map((comment, index) => (
                         <div key={index} className='comment-div'>
-                            <Avatar src={comment.ProfilePic} className={classes.da} />
-                            <p><span style={{ fontWeight: 'bold', display: 'inline-block' }}>{comment.UserName}</span>&nbsp; &nbsp; {comment.Text}</p>    {/* nbsp for sppace */}
+                            <div className='com1'>
+                                <Avatar src={comment.ProfilePic} className={classes.da} />
+                                <div className='commentUser'>{comment.UserName} :</div>
+                            </div>
+                            <div className='commentText'>{comment.Text}</div>
                         </div>
                     ))
 

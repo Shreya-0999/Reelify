@@ -20,7 +20,6 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 function Feed() {
-    console.log("Feed Started");
     const classes = useStyles();
     const [userData, setUserData] = useState(null);
     const [profile, setProfile] = useState(false);
@@ -42,9 +41,8 @@ function Feed() {
             })
 
             let pData = await database.posts.doc(el).get();
-            console.log(pData.data().Comment);
 
-            pData.data().Comment.map(ele=>{
+            pData.data().Comment.map(ele => {
                 database.comments.doc(ele).update({
                     UserName: editUsername
                 })
@@ -53,20 +51,19 @@ function Feed() {
         })
     }
 
-    console.log(editBio);
     useEffect(() => {
-        console.log("Feed Use Effect");
         const unsubs = database.users.doc(currentUser.uid).onSnapshot(doc => {
             setUserData(doc.data());
+            return unsubs
         })
     }, [])
 
-    useEffect(()=>{
-        if(userData != null){
+    useEffect(() => {
+        if (userData != null) {
             setEditBio(userData.Bio);
             setEditUsername(userData.Username);
         }
-    },[userData])
+    }, [userData])
 
     return (
         <>
@@ -79,7 +76,7 @@ function Feed() {
                             </div>
                             : <>
                                 <div className='naviBar' >
-                                    <NaviBar />
+                                    <NaviBar userData={userData} />
                                 </div>
 
                                 <div className='feed'>
@@ -114,14 +111,17 @@ function Feed() {
                                                     <div className='pbox31'>
                                                         <h5 className='pbox311' >{userData.Full_Name}</h5>
                                                     </div>
-                                                    <div className='pbox32' contentEditable={edit} suppressContentEditableWarning={true}
-                                                        onBlur={(e) => { setEditBio(e.target.innerText) }}
-                                                    >
+                                                    <div style= {{display:'flex', height:'80%'}}>
                                                         {edit
                                                             ? <CreateIcon className={classes.editIcon} />
                                                             : <></>
                                                         }
-                                                        {userData.Bio}
+                                                        <div className='pbox32' contentEditable={edit} suppressContentEditableWarning={true}
+                                                            onBlur={(e) => { setEditBio(e.target.innerText) }}
+                                                        >
+
+                                                            {userData.Bio}
+                                                        </div>
                                                     </div>
                                                 </div>
 
@@ -147,7 +147,7 @@ function Feed() {
                                             <UploadImageFile userData={userData} />
                                             <UploadVideoFile userData={userData} />
                                         </div>
-                                    
+
                                     </div>
 
                                     <div className='feedsArea'>

@@ -17,8 +17,6 @@
     margin: 25px;
     border-radius: 16px;
     cursor: pointer;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.048);
-    border: 1px solid rgba(148, 144, 144, 0.637);
 }
 .profilePost:hover{
     filter: brightness(80%);
@@ -30,17 +28,16 @@
     border-radius: 2rem;
     display: flex;
     justify-content: center;
-    align-items: center
+    align-items: center;
+    box-shadow: 0 3px 9px rgb(65 64 64 / 20%), 0 8px 15px rgb(0 0 0 / 20%);
 }
 
 
 .dialogContainer{
-    /* min-height: 50vh; */
     height: 85vh;
     width: 50vw;
     display: flex;
     padding: 10px;
-    /* background: rgba(222, 215, 240, 0.486); */
     background: rgba(222, 215, 240, 0.486);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -49,7 +46,6 @@
     border: 2px solid rgba(216, 218, 219, 0.877);
 }
 .media-part{
-    /* min-height: 50vh; */
     max-height: 85vh;
     width: 50%;
     display: flex;
@@ -61,17 +57,21 @@
     border-radius: 5px;
 }
 .info-part{
-    height: 85vh;
+    max-height: 85vh;
     width: 50%;
     border-radius: 5px;
     margin-left: 5px;
-    /* background-color: bisque; */
 }
 .extra{
-    /* background-color: rgb(199, 123, 24); */
-    height: 10vh;
+    height: 19%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border-top: 1px solid gray;
 }
 .likes{
-    height: 80%;
-    /* background-color: rgb(200, 206, 206); */
+    height: 45%;
+}
+.profileCommentBox{
+    height: 45%;
 }

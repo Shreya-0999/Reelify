@@ -11,7 +11,6 @@ const useStyles = makeStyles((theme) => ({
     videoBtn: {
         height: '100%',
         width: '100%',
-        // fontSize: 18,
         fontFamily: `'Nunito', sans-serif`,
         fontWeight: 100,
     },
@@ -27,8 +26,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function UploadVideoFile(props) {
-    console.log("Upload Video Starts ");
-    // console.log(props);
     const classes = useStyles();
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -39,7 +36,6 @@ function UploadVideoFile(props) {
 
         if (!file) {
             setError("Please select a file.");
-            console.log("Please select a file.");
             setTimeout(() => {
                 setError(null)
             }, 2000)
@@ -48,7 +44,6 @@ function UploadVideoFile(props) {
 
         if (type.indexOf(file.type) == -1) {
             setError("Please select a video file.");
-            console.log("Please select a video file.");
             setTimeout(() => {
                 setError(null)
             }, 2000)
@@ -57,7 +52,6 @@ function UploadVideoFile(props) {
 
         if (file.size / (1024 * 1024) > 100) {
             setError("The file size is too big to upload");
-            console.log("Please select a small file.");
             setTimeout(() => {
                 setError(null);
             }, 2000)
@@ -84,10 +78,8 @@ function UploadVideoFile(props) {
             }
 
             async function fn3() {
-                console.log("Uploading video ");
                 const videoURL = await uploadVideoTask.snapshot.ref.getDownloadURL();
-                console.log("video url: ", videoURL);
-                const docRef = await database.posts.add({    // add?
+                const docRef = await database.posts.add({    
                     PostId: id,
                     PostUrl: videoURL,
                     Type: "video",
@@ -101,8 +93,6 @@ function UploadVideoFile(props) {
                 const res = await database.users.doc(props.userData.Uid).update({
                     Posts: [...props.userData.Posts, docRef.id]
                 })
-                console.log("result", res);
-                console.log("DocRef", docRef);
 
                 setLoading(false);
             }
@@ -123,7 +113,6 @@ function UploadVideoFile(props) {
             <div className='upload' style={{width:'50%'}}>
                 {error != null ? <Alert severity="error" className={classes.alertBox}>{error}</Alert> : <>
                     <input
-                        // className={classes.input}
                         style={{ display: 'none' }}
                         id="icon-button-file"
                         type="file"
@@ -132,8 +121,6 @@ function UploadVideoFile(props) {
                     <label htmlFor="icon-button-file" style={{width:'100%'}}>
                         <Button
                             className={classes.videoBtn}
-                            // variant="outlined"
-                            // color="secondary"
                             component="span"
                             size='medium'
                             disabled={loading}

@@ -10,7 +10,6 @@ import MuiDialogTitle from '@material-ui/core/DialogTitle';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import IconButton from '@material-ui/core/IconButton';
-import Card from '@material-ui/core/Card';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Image from '../Post/Image';
 import Video from '../Post/Video';
@@ -53,7 +52,6 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 function Profile({ userData }) {
-    console.log("Profile page");
     const classes = useStyles();
     const [openId, setOpenId] = useState(null);
     const [profPosts, setProfPost] = useState(null);
@@ -78,7 +76,6 @@ function Profile({ userData }) {
             })
 
             // update user
-            console.log(obj);
             database.users.doc(userData.Uid).update({
                 Posts: obj
             })
@@ -90,7 +87,6 @@ function Profile({ userData }) {
 
 
             let storageRef = storage.refFromURL(post.PostUrl)
-            console.log(storageRef.name);
 
             storageRef.delete().then(() => {
                 console.log("Succesfully Deleted");
@@ -111,17 +107,16 @@ function Profile({ userData }) {
         }
         setAnchorEl(null);
     }
+    
     const handleCloseA = () => {
         setAnchorEl(null);
     };
 
     useEffect(() => {
-        console.log("Profile use effect 1");
         let postArr = [];
         let unsbs = database.posts.orderBy('CreatedAt', 'desc').onSnapshot(allPostSnap => {
             postArr = [];
             allPostSnap.forEach(doc => {
-                // console.log(doc.data().UserId);
                 if (doc.data().UserId == userData.Uid) {
                     let obj = { ...doc.data(), PostId: doc.id };
                     postArr.push(obj);
@@ -148,6 +143,7 @@ function Profile({ userData }) {
                                         <div className='profilePostMedia' onClick={() => handleClickOpen(post.PostId)}>
                                             {post.Type == 'image' ? <Image source={post.PostUrl} prof={true} /> : <Video source={post.PostUrl} prof={true} />}
                                         </div>
+
                                         <Dialog maxWidth="md" onClose={handleClose} aria-labelledby="customized-dialog-title" open={openId == post.PostId}>
                                             <MuiDialogTitle className={classes.postDialogBox}>
                                                 <div className='dialogContainer'>
@@ -164,69 +160,64 @@ function Profile({ userData }) {
                                                         }
                                                     </div>
                                                     <div className='info-part'>
-                                                        <Card>
-                                                            <CardHeader
-                                                                avatar={
-                                                                    <Avatar src={post?.UserProfile} aria-label="recipe" className={classes.avatar}>
-                                                                    </Avatar>
-                                                                }
-                                                                action={
-                                                                    <div className='optionBox'>
-                                                                        <IconButton
-                                                                            aria-label="more"
-                                                                            aria-controls="long-menu"
-                                                                            aria-haspopup="true"
-                                                                            onClick={handleMenu}
-                                                                        >
-                                                                            <MoreVertIcon />
-                                                                        </IconButton>
-                                                                        <Menu
-                                                                            id="menu-appbar"
-                                                                            anchorEl={anchorEl}
-                                                                            anchorOrigin={{
-                                                                                vertical: 'top',
-                                                                                horizontal: 'right',
-                                                                            }}
-                                                                            keepMounted
-                                                                            transformOrigin={{
-                                                                                vertical: 'top',
-                                                                                horizontal: 'right',
-                                                                            }}
-                                                                            open={open}
-                                                                            onClose={handleCloseA}
-                                                                        >
-                                                                            <MenuItem onClick={() => { handleDeleteClose(post) }}>Delete</MenuItem>
-                                                                            <MenuItem onClick={handleClose}>Profile</MenuItem>
-                                                                        </Menu>
-                                                                    </div>
-                                                                }
-                                                                title={post?.UserName}
-                                                                className={classes.dialogHeader}
+                                                        <CardHeader
+                                                            avatar={
+                                                                <Avatar src={post?.UserProfile} aria-label="recipe" className={classes.avatar}>
+                                                                </Avatar>
+                                                            }
+                                                            action={
+                                                                <div className='optionBox'>
+                                                                    <IconButton
+                                                                        aria-label="more"
+                                                                        aria-controls="long-menu"
+                                                                        aria-haspopup="true"
+                                                                        onClick={handleMenu}
+                                                                    >
+                                                                        <MoreVertIcon />
+                                                                    </IconButton>
+                                                                    <Menu
+                                                                        id="menu-appbar"
+                                                                        anchorEl={anchorEl}
+                                                                        anchorOrigin={{
+                                                                            vertical: 'top',
+                                                                            horizontal: 'right',
+                                                                        }}
+                                                                        keepMounted
+                                                                        transformOrigin={{
+                                                                            vertical: 'top',
+                                                                            horizontal: 'right',
+                                                                        }}
+                                                                        open={open}
+                                                                        onClose={handleCloseA}
+                                                                    >
+                                                                        <MenuItem onClick={() => { handleDeleteClose(post) }}>Delete</MenuItem>
+                                                                    </Menu>
+                                                                </div>
+                                                            }
+                                                            title={post?.UserName}
+                                                            className={classes.dialogHeader}
+                                                        />
 
-                                                            />
+                                                        <hr style={{ border: "none", height: "1px", color: "#dfe6e9", backgroundColor: "#dfe6e9" }} />
+                                                        <CardContent className={classes.dialogComments}>
+                                                            <Comments userData={userData} postData={post} />
+                                                        </CardContent>
 
-                                                            <hr style={{ border: "none", height: "1px", color: "#dfe6e9", backgroundColor: "#dfe6e9" }} />
-                                                            <CardContent className={classes.dialogComments}>
-
-                                                                <Comments userData={userData} postData={post} />
-                                                            </CardContent>
-
-                                                        </Card>
                                                         <div className='extra'>
                                                             <div className='likes'>
                                                                 <Like userData={userData} postData={post} />
-                                                                <Typography className={classes.typo} variant='body2'>Liked By {post.Likes.length == 0 ? 'nobody' : ` others`}</Typography>
+                                                                <Typography className={classes.typo} variant='body2'>{post.Likes.length} Likes</Typography>
                                                             </div>
-                                                            <AddComments userData={userData} postData={post} />
+                                                            <div className='profileCommentBox'>
+                                                                <AddComments userData={userData} postData={post} />
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </MuiDialogTitle>
                                         </Dialog>
-
                                     </div>
                                 </React.Fragment>
-
                             ))
                         }
                     </div>

@@ -5,7 +5,6 @@
 body{
     margin: 0;
     font-family: 'Nunito', sans-serif;
-    /* color: #3f3f41; */
     color: rgb(99, 100, 100);
     filter: brightness(1.08);
 }
@@ -20,10 +19,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    /* From https://css.glass */
-    /* background: rgba(255, 255, 255, 0.2); */
     background: rgba(216, 220, 255, 0.377);
-    /* background: rgba(210, 224, 255, 0.2); */
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(9px);
@@ -36,7 +32,6 @@ body{
     height: 580px;
     width: 780px;
     display: flex;
-    /* flex-direction: column; */
     justify-content: center;
     align-items: center;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.123);

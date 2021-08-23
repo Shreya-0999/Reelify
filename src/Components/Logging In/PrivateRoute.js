@@ -3,7 +3,6 @@ import { AuthContext } from '../../Context/AuthProvider'
 import { Route, Redirect } from 'react-router-dom';
 
 function PrivateRoute({component:Component, ...rest}) {
-    console.log("Private Router");
     const {currentUser} = useContext(AuthContext);
 
     return (

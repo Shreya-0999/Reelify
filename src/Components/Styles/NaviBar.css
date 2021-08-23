@@ -4,7 +4,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    /* background-color: aquamarine; */
 }
 .side1{
     display: flex;
@@ -32,7 +31,6 @@
 }
 .navName{
     height: 100%;
-    /* width: 25%; */
     padding: 7px;
     display: flex;
     justify-content: flex-end;
@@ -42,7 +40,3 @@ img{
     max-height: 100%;
     max-width: 100%;
 }
-
-/* .logoutBox{
-    background-color: aquamarine;
-} */

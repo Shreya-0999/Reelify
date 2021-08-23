@@ -27,19 +27,16 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function UploadImageFile(props) {
-    console.log("Upload Image starts");
     const classes = useStyles();
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const types = ["image/jpg", "image/jpeg", "image/png"];
 
     const handleImageFile = (e) => {
-        console.log("Upload Image Starts ");
         const file = e?.target?.files[0];
 
         if (!file) {
             setError("Please select a file.");
-            console.log("Please select a file.");
             setTimeout(() => {
                 setError(null)
             }, 2000)
@@ -48,13 +45,11 @@ function UploadImageFile(props) {
 
         if (types.indexOf(file.type) == -1) {
             setError("Please select a file.");
-            console.log("Please select a image file.");
             setTimeout(() => {
                 setError(null)
             }, 2000)
             return
         }
-        // minimum file size ?
 
         try {
             setLoading(true);
@@ -76,7 +71,6 @@ function UploadImageFile(props) {
             }
 
             async function fn3() {
-                console.log("Uploading image ");
                 const imageURL = await uploadImageTask.snapshot.ref.getDownloadURL();
                 const docRef = await database.posts.add({
                     PostId: id,
@@ -92,8 +86,6 @@ function UploadImageFile(props) {
                 const res = database.users.doc(props.userData.Uid).update({
                     Posts: [...props.userData.Posts, docRef.id]
                 })
-                console.log("result", res);
-                console.log("DocRef", docRef);
 
                 setLoading(false);
             }
