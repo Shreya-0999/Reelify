@@ -1,17 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import Dialog from '@material-ui/core/Dialog';
 import MuiDialogTitle from '@material-ui/core/DialogTitle';
-import IconButton from '@material-ui/core/IconButton';
-import Card from '@material-ui/core/Card';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
 import CardContent from '@material-ui/core/CardContent';
 import CardHeader from '@material-ui/core/CardHeader';
 import Typography from '@material-ui/core/Typography';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
 import Avatar from '@material-ui/core/Avatar';
 import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
-import { storage, database } from '../../firebase';
+import { database } from '../../firebase';
 import { makeStyles } from '@material-ui/core/styles';
 import Comments from './Comments';
 import AddComments from './AddComments';
@@ -41,10 +36,6 @@ const useStyles = makeStyles((theme) => ({
     },
     postDialogBox: {
         background: "rgba(222, 215, 240, 0.486)",
-        boxShadow: " 0 4px 30px rgba(0, 0, 0, 0.1)",
-        backdropFilter: "blur(6.7px)",
-        border: "2px solid rgba(216, 218, 219, 0.877)",
-        WebkitBackdropFilter: "blur(6.7px)"
     },
     dialogHeader: {
         height: "11%",
@@ -85,7 +76,7 @@ function Post({ userData = null }) {
 
     const callbacks = enteries => {
         enteries.forEach(element => {
-            let el = element.target.childNodes[1].childNodes[0];
+            let el = element.target.childNodes[0];
             el.play().then(() => {
                 if (!el.paused && !element.isIntersecting) {
                     el.pause();
@@ -93,7 +84,7 @@ function Post({ userData = null }) {
             })
         })
     }
-    const observer = new IntersectionObserver(callbacks, { threshold: 0.8 });   // chnage
+    const observer = new IntersectionObserver(callbacks, { threshold: 0.95 }); 
 
     useEffect(() => {
         let postArr = [];
@@ -105,10 +96,11 @@ function Post({ userData = null }) {
             })
             setPost(postArr);
         })
+        return unsbs;
     }, [])
 
     useEffect(() => {
-        let videos = document.querySelectorAll(".video");
+        let videos = document.querySelectorAll(".video .postMedia");
         videos.forEach(el => {
             observer.observe(el);
         })
@@ -146,7 +138,7 @@ function Post({ userData = null }) {
                                             <AddComments userData={userData} postData={post} />
                                         </div>
                                         <Dialog maxWidth="md" onClose={handleClose} aria-labelledby="customized-dialog-title" open={openId == post.PostId}>
-                                            <MuiDialogTitle className={classes.postDialogBox}>
+                                            <MuiDialogTitle className={classes.postDialogBox} elevation={0}>
                                                 <div className='dialogContainer'>
                                                     <div className='media-part'>
                                                         {post.Type == 'image'

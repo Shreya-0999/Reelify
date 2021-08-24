@@ -15,11 +15,10 @@
 .commentUser{
     height: 100%;
     font-size: 15px;
-    text-decoration: underline;
 }
 .commentText{
-    width: 100%;
     display: flex;
     word-wrap: break-word;
     font-weight: lighter;
+    margin-left: 40px;
 }

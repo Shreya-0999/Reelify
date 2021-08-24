@@ -12,7 +12,7 @@ const useStyles = makeStyles({
     }
 });
 
-function Comments({ userData = null, postData = null }) {
+function Comments({ postData = null }) {
     const classes = useStyles();
     const [comments, setComments] = useState(null);
 

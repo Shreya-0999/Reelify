@@ -29,8 +29,8 @@ body{
 }
 
 .main_card{
-    height: 580px;
-    width: 780px;
+    height: 85vh;
+    width: 54vw;
     display: flex;
     justify-content: center;
     align-items: center;

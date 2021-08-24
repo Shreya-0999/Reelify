@@ -7,27 +7,21 @@ body{
     font-family: 'Nunito', sans-serif;
     color: #3f3f41;
     filter: brightness(1.08);
-    overflow: hidden;
 }
 .feedLoading{
     height: 100%;
     width: 100%;
     display: flex;
     align-items: center;
-    overflow: hidden;
     justify-content: center;
 }
 .feedBody{
     background-image: url('../Images/Bg.png');
     background-size: cover;
-    overflow: hidden;
 }
 .bodyArea{
     background: rgba(216, 220, 255, 0.295);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(9px);
-    -webkit-backdrop-filter: blur(9px);
     border: 1px solid rgba(255, 255, 255, 0.3);
     height: 100vh;
     width: 100vw;
@@ -36,6 +30,10 @@ body{
     overflow-x: hidden;
     position: relative;
 }
+.bodyArea::-webkit-scrollbar {
+    display: none;
+  }
+  
 .naviBar{
     height: 8.5%;
     width: 100%;
@@ -59,7 +57,7 @@ body{
 
 .feedLeftCompo{
     width: 30%;
-    height: 630px;
+    height: 88vh;
     padding: 10px;
     display: flex;
     flex-direction: column;
@@ -68,8 +66,8 @@ body{
     position: -webkit-sticky;
     position: sticky;
     left:0;
-    top: 85px;
-    z-index: 10;
+    top: 75px;
+    border-right: 1px solid rgba(168, 164, 164, 0.637);
 }
 
 .leftFeedPic{
@@ -89,9 +87,6 @@ body{
     object-fit: cover;
     box-shadow: 0 3px 9px rgba(65, 64, 64, 0.2),
     0 8px 15px rgba(0,0,0,.2);
-}
-.leftFeedimg:hover{
-    animation: profileAnimate 8s infinite ease ;
 }
 
 .leftFeedUserName{
@@ -116,7 +111,6 @@ body{
     align-items: center;
     position: relative;
     overflow: auto;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.123) inset;
 }
 
 .uploadBtns{
@@ -139,25 +133,12 @@ body{
     margin-top: 10px;
 }
 
-@keyframes profileAnimate {
-    0%{
-        border-radius: 47% 53% 36% 64% / 55% 79% 21% 45% ;
-    }
-    25%{
-        border-radius: 60% 40% 76% 24% / 51% 55% 45% 49%  ;
-    }
-    50%{
-        border-radius:39% 61% 46% 54% / 62% 72% 28% 38% ;
-    }
-    75%{
-        border-radius: 60% 40% 76% 24% / 51% 55% 45% 49%  ;
-    }
-    100%{
-        border-radius: 47% 53% 36% 64% / 55% 79% 21% 45% ;
-    }
+.pboxOption{
+    height: 3%;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
 }
-
-
 .pbox1{
     height: 25%;
     width: 100%;
@@ -251,6 +232,7 @@ body{
     font-size: 14px;
     color: #686968;
     overflow: auto;
+    margin: auto 0;
 }
 .pbox32::-webkit-scrollbar {
     display: none;

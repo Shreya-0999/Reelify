@@ -27,20 +27,11 @@ const useStyles = makeStyles((theme) => ({
     },
     typo: {
         marginLeft: '2%',
-        marginTop: "0",
-    },
-    large: {
-        width: theme.spacing(5),
-        height: theme.spacing(5),
-        margin: '8px',
-        boxShadow: '0 3px 9px rgba(65, 64, 64, 0.2), 0 8px 15px rgba(0,0,0,.2)'
+        marginTop: "2%",
     },
     postDialogBox: {
         background: "rgba(222, 215, 240, 0.486)",
-        boxShadow: " 0 4px 30px rgba(0, 0, 0, 0.1)",
-        backdropFilter: "blur(6.7px)",
-        border: "2px solid rgba(216, 218, 219, 0.877)",
-        WebkitBackdropFilter: "blur(6.7px)"
+        
     },
     dialogHeader: {
         height: "8vh"

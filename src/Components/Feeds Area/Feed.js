@@ -10,6 +10,10 @@ import { AuthContext } from '../../Context/AuthProvider';
 import { database, storage } from './../../firebase';
 import LoadingIcon from '../Images/loading1.gif'
 import CreateIcon from '@material-ui/icons/Create';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
+import IconButton from '@material-ui/core/IconButton';
+import MenuItem from '@material-ui/core/MenuItem';
+import Menu from '@material-ui/core/Menu';
 import '../Styles/Feed.css'
 
 const useStyles = makeStyles((theme) => ({
@@ -27,8 +31,57 @@ function Feed() {
     const { currentUser } = useContext(AuthContext);
     const [editBio, setEditBio] = useState('');
     const [editUsername, setEditUsername] = useState("");
+    const { logout, deleteAccount } = useContext(AuthContext);
+    const [anchorEl, setAnchorEl] = React.useState(null);
+    const boxopen = Boolean(anchorEl);
 
 
+    const handleMenu = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleCloseBox = () => {
+        setAnchorEl(null);
+    };
+
+    const handleDeleteAcnt = async () => {
+        let userDataCopy = userData
+        // delete ->
+        // 1. all post 
+        // 2. comments on each post
+        // 3. data of post from storage
+        // 4. profile picture from storage
+        // 5. user data from Users
+
+        // getting all post
+        userDataCopy.Posts.map(async el => {
+            // inside post
+            let post = await (await database.posts.doc(el).get()).data();
+
+
+            // deleting comments
+            post.Comment.map(async el => {
+                await database.comments.doc(el).delete()
+            })
+
+            // postURL to storage
+            let storageRef = storage.refFromURL(post.PostUrl)
+            await storageRef.delete();
+
+            // deleting the post
+            database.posts.doc(el).delete()
+        })
+
+        // profile Url
+        let storageRef = storage.refFromURL(userDataCopy.ProfileUrl)
+        await storageRef.delete();
+
+        // user data 
+        database.users.doc(userDataCopy.Uid).delete();
+        deleteAccount()
+
+
+    }
 
     const handleSave = () => {
         database.users.doc(userData.Uid).update({
@@ -81,6 +134,36 @@ function Feed() {
 
                                 <div className='feed'>
                                     <div className='feedLeftCompo'>
+                                        <div className='pboxOption'>
+                                            <IconButton
+                                                aria-label="account of current user"
+                                                aria-controls="menu-appbar"
+                                                aria-haspopup="true"
+                                                onClick={handleMenu}
+                                                color="inherit"
+                                            >
+                                                <MoreVertIcon />
+                                            </IconButton>
+                                            <Menu
+                                                id="menu-appbar"
+                                                anchorEl={anchorEl}
+                                                anchorOrigin={{
+                                                    vertical: 'top',
+                                                    horizontal: 'right',
+                                                }}
+                                                keepMounted
+                                                transformOrigin={{
+                                                    vertical: 'top',
+                                                    horizontal: 'right',
+                                                }}
+                                                open={boxopen}
+                                                onClose={handleCloseBox}
+                                            >
+                                                <MenuItem onClick={() => { logout() }}>Logout</MenuItem>
+                                                <MenuItem onClick={handleDeleteAcnt}>Delete Account</MenuItem>
+                                            </Menu>
+                                        </div>
+
                                         {profile
                                             ? <>
                                                 <div className='pbox1'>
@@ -111,7 +194,7 @@ function Feed() {
                                                     <div className='pbox31'>
                                                         <h5 className='pbox311' >{userData.Full_Name}</h5>
                                                     </div>
-                                                    <div style= {{display:'flex', height:'80%'}}>
+                                                    <div style={{ display: 'flex', height: '80%' }}>
                                                         {edit
                                                             ? <CreateIcon className={classes.editIcon} />
                                                             : <></>

@@ -22,11 +22,9 @@ const useStyles = makeStyles((theme) => ({
         display: 'none',
     },
     textField: {
-        // color:red
         borderColor: 'grey'
     },
     resize: {
-        // fontSize: 10
         fontFamily: 'Quicksand, sans-serif',
         fontWeight: "700",
         color: "#4e4a4a"
@@ -35,7 +33,6 @@ const useStyles = makeStyles((theme) => ({
         width: 290,
         borderRadius: '32px',
         color: '#6e666e',
-        // width: '100%',
     },
     btn: {
         background: 'linear-gradient(to bottom, #a06ded 5%, #845ce0 100%)',
@@ -113,22 +110,15 @@ function Login() {
                             <h4 className='subHeaderLogin'>Login</h4>
                             <div className='inputfield'>
                                 <TextField
-                                    // className={classes.inputfield}
                                     id="outlined-basic"
                                     label="Email"
                                     variant="outlined"
-                                    // size='small'
                                     fullWidth
                                     color='primary'
                                     InputProps={{
                                         classes: {
                                             input: classes.resize,
                                         },
-                                        // startAdornment: (
-                                        //     <InputAdornment position="start">
-                                        //       <AccountCircle />
-                                        //     </InputAdornment>
-                                        // ),
                                     }}
                                     onChange={(e) => setEmail(e.target.value)}
                                 />
